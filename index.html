@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enzzo Gomes | Full Stack & AI Developer</title>
+    <title>Enzzo Gomes | Sites Profissionais a partir de R$ 500</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,345 +19,385 @@
             color: white;
             font-family: 'Barlow', sans-serif;
             overflow-x: hidden;
+            cursor: default;
         }
         .neon-text { color: var(--neon); }
+        .neon-bg { background: var(--neon); color: black; }
         .neon-border { border-color: var(--neon); }
-        .neon-bg { background: var(--neon); }
-        .card-hover:hover {
-            transform: translateY(-5px);
-            border-color: var(--neon);
-            box-shadow: 0 10px 30px rgba(212, 255, 0, 0.1);
+        .skew-box { transform: skewX(-12deg); }
+        .unskew-content { transform: skewX(12deg); }
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--neon);
+            line-height: 1;
         }
-        /* Scrollbar personalizada */
-        ::-webkit-scrollbar {
-            width: 8px;
-            height: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: var(--dark);
-        }
-        ::-webkit-scrollbar-thumb {
-            background: var(--neon);
-            border-radius: 4px;
-        }
-        /* Selection */
-        ::selection {
-            background: var(--neon);
-            color: black;
-        }
-        /* Smooth transitions */
-        * {
+        .service-card {
+            background: var(--gray);
+            border: 1px solid #333;
             transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon);
+            box-shadow: 0 10px 40px rgba(212, 255, 0, 0.15);
+        }
+        .scroll-indicator {
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-10px);}
+            60% {transform: translateY(-5px);}
+        }
+        @media (max-width: 768px) {
+            .skew-box { transform: skewX(-8deg); }
+            .unskew-content { transform: skewX(8deg); }
         }
     </style>
 </head>
 <body class="min-h-screen">
 
     <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 py-6 px-6 bg-dark/90 backdrop-blur-sm">
+    <nav class="fixed top-0 left-0 right-0 z-50 py-6 px-6 bg-dark/95 backdrop-blur-sm border-b border-gray-800">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black">
+            <div class="text-2xl font-black italic">
                 <span class="text-white">ENZZO</span>
-                <span class="neon-text">GOMES</span>
+                <span class="neon-text">DEV</span>
             </div>
-            <div class="hidden md:flex gap-8">
-                <a href="#home" class="text-gray-300 hover:text-white hover:neon-text">Início</a>
-                <a href="#about" class="text-gray-300 hover:text-white hover:neon-text">Sobre</a>
-                <a href="#projects" class="text-gray-300 hover:text-white hover:neon-text">Projetos</a>
-                <a href="#contact" class="text-gray-300 hover:text-white hover:neon-text">Contato</a>
-                <a href="#services" class="px-4 py-2 neon-bg text-black font-bold hover:bg-opacity-90">Serviços</a>
+            <div class="hidden md:flex items-center gap-8">
+                <a href="#servicos" class="text-gray-300 hover:text-white hover:neon-text font-bold text-sm uppercase tracking-widest">Serviços</a>
+                <a href="#precos" class="text-gray-300 hover:text-white hover:neon-text font-bold text-sm uppercase tracking-widest">Preços</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-white hover:neon-text font-bold text-sm uppercase tracking-widest">Portfólio</a>
+                <a href="#contato" class="text-gray-300 hover:text-white hover:neon-text font-bold text-sm uppercase tracking-widest">Contato</a>
+                <a href="https://portifolio-gamma-snowy-87.vercel.app/" target="_blank" class="px-6 py-2 neon-bg text-black font-bold hover:opacity-90 transform skew-x-[-12deg]">
+                    <span class="block transform skew-x-[12deg] text-sm uppercase tracking-widest">Meu Portfólio</span>
+                </a>
             </div>
-            <button class="md:hidden neon-text">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
         <div class="max-w-7xl mx-auto text-center">
-            <!-- Profile Image -->
-            <div class="w-48 h-48 mx-auto rounded-full border-4 neon-border mb-8 overflow-hidden">
-                <div class="w-full h-full bg-gray-800"></div>
-            </div>
-            
-            <h1 class="text-5xl md:text-8xl font-black mb-4">
-                <span class="text-white">ENZZO</span><br>
-                <span class="neon-text">GOMES</span>
-            </h1>
-            
-            <div class="flex items-center justify-center gap-4 my-8">
-                <div class="h-1 w-12 neon-bg"></div>
-                <p class="text-xl md:text-2xl text-gray-300 font-bold uppercase tracking-widest">
-                    Full Stack Dev & AI Specialist
+            <div class="mb-12">
+                <div class="inline-block px-6 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-8">
+                    Sites Profissionais • Preços Acessíveis
+                </div>
+                
+                <h1 class="text-5xl md:text-7xl font-black italic mb-8 tracking-tighter">
+                    <span class="text-white">Seu Site</span><br>
+                    <span class="neon-text">a partir de R$ 500</span>
+                </h1>
+                
+                <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto font-light">
+                    Desenvolvimento de sites rápidos, modernos e otimizados para conversão. 
+                    Preços transparentes sem surpresas.
                 </p>
-                <div class="h-1 w-12 neon-bg"></div>
+                
+                <div class="flex flex-wrap gap-6 justify-center mb-16">
+                    <a href="#precos" class="px-8 py-4 neon-bg text-black font-bold text-lg hover:opacity-90 transform skew-x-[-12deg]">
+                        <span class="block transform skew-x-[12deg]">Ver Preços</span>
+                    </a>
+                    <a href="#contato" class="px-8 py-4 border-2 border-[#D4FF00] text-white font-bold text-lg hover:bg-[#D4FF00] hover:text-black transition-all transform skew-x-[-12deg]">
+                        <span class="block transform skew-x-[12deg]">Falar Agora</span>
+                    </a>
+                </div>
             </div>
             
-            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
-                Transformando ideias complexas em soluções de alto desempenho. 
-                Especialista em construir a ponte entre Inteligência Artificial 
-                e experiências web intuitivas.
-            </p>
-            
-            <div class="flex flex-wrap gap-4 justify-center">
-                <a href="#contact" class="px-8 py-4 neon-bg text-black font-bold hover:bg-opacity-90">
-                    Vamos conversar
-                </a>
-                <a href="#projects" class="px-8 py-4 border-2 neon-border text-white hover:neon-bg hover:text-black">
-                    Ver Projetos
-                </a>
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+                <div class="service-card p-6 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg] text-center">
+                        <div class="text-3xl font-black neon-text mb-2">0.8s</div>
+                        <div class="text-gray-300 text-sm">Carregamento</div>
+                    </div>
+                </div>
+                <div class="service-card p-6 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg] text-center">
+                        <div class="text-3xl font-black neon-text mb-2">99+</div>
+                        <div class="text-gray-300 text-sm">Performance</div>
+                    </div>
+                </div>
+                <div class="service-card p-6 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg] text-center">
+                        <div class="text-3xl font-black neon-text mb-2">100%</div>
+                        <div class="text-gray-300 text-sm">Mobile</div>
+                    </div>
+                </div>
+                <div class="service-card p-6 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg] text-center">
+                        <div class="text-3xl font-black neon-text mb-2">7-14d</div>
+                        <div class="text-gray-300 text-sm">Entrega</div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about" class="py-20 px-6 bg-gray">
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 px-6">
         <div class="max-w-7xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">
-                    <span class="neon-text">01 //</span>
-                    <span class="text-white"> SOBRE MIM</span>
+                <h2 class="text-4xl md:text-5xl font-black italic mb-6 tracking-tighter">
+                    <span class="neon-text">O Que Ofereço</span>
                 </h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                    Conheça mais sobre minha trajetória, formação e paixões
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Age Card -->
-                <div class="card-hover p-8 border border-gray-700 rounded-lg">
-                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">IDADE</h3>
-                    <div class="text-6xl font-black text-white mb-2">22</div>
-                    <p class="text-gray-400">anos</p>
-                </div>
-                
-                <!-- Location Card -->
-                <div class="card-hover p-8 border border-gray-700 rounded-lg">
-                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">LOCALIZAÇÃO</h3>
-                    <div class="text-4xl font-black text-white mb-2">BRASIL</div>
-                    <p class="text-gray-400">Disponível para projetos globais</p>
-                </div>
-                
-                <!-- Education Card -->
-                <div class="card-hover p-8 border border-gray-700 rounded-lg md:col-span-2 lg:col-span-1">
-                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">FORMAÇÃO</h3>
-                    <h4 class="text-2xl font-black text-white mb-4">Ciência de Dados & IA</h4>
-                    <p class="text-gray-400">
-                        Cursando Ciência de Dados e Inteligência Artificial. 
-                        Focado em Machine Learning, análise de dados e construção 
-                        de soluções inteligentes.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- Bio -->
-            <div class="mt-16 p-8 border-l-4 neon-border bg-dark rounded-r-lg">
-                <h3 class="text-2xl font-black text-white mb-6">Minha Jornada</h3>
-                <p class="text-gray-300 text-lg leading-relaxed">
-                    Apaixonado por tecnologia desde cedo, encontrei no código minha forma de criar e inovar. 
-                    Acredito que a tecnologia deve ser poderosa e acessível. Meu foco está em construir 
-                    soluções que resolvem problemas reais, combinando performance técnica com design intuitivo.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects" class="py-20 px-6">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">
-                    <span class="neon-text">02 //</span>
-                    <span class="text-white"> PROJETOS</span>
-                </h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                    Trabalhos selecionados com foco em performance e inovação
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light">
+                    Soluções completas para sua presença online
                 </p>
             </div>
             
             <div class="grid md:grid-cols-2 gap-8">
-                <!-- Project 1 - LINK CORRIGIDO -->
-                <div class="card-hover border border-gray-700 rounded-lg overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">IA / Educação</span>
-                            <div class="text-2xl">💻</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">AI English Tutor</h3>
-                        <p class="text-gray-300 mb-6">
-                            Tutor inteligente com IA para aprendizado de idiomas com feedback em tempo real.
+                <!-- Serviço 1 -->
+                <div class="service-card p-8 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg]">
+                        <h3 class="text-2xl font-black text-white mb-4">Landing Page Básica</h3>
+                        <p class="text-gray-300 mb-6 font-light">
+                            Uma página otimizada para conversão, ideal para captar leads ou apresentar seu serviço principal.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">React</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">OpenAI API</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Node.js</span>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Design responsivo e moderno
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Otimização básica de SEO
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Integração com formulário
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Hospedagem inclusa (1 ano)
+                            </div>
                         </div>
-                        <a href="https://huggingface.co/spaces/Enzzozink/tutor-ingles-ia" 
-                           target="_blank"
-                           class="inline-block w-full text-center px-6 py-3 neon-bg text-black font-bold hover:bg-opacity-90">
-                            Ver Projeto
-                        </a>
+                        <div class="pt-6 border-t border-gray-800">
+                            <div class="price-tag">R$ 500</div>
+                            <div class="text-gray-400 text-sm">À vista ou 2x R$ 275</div>
+                        </div>
                     </div>
                 </div>
                 
-                <!-- Project 2 - LINK CORRIGIDO -->
-                <div class="card-hover border border-gray-700 rounded-lg overflow-hidden">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">Web App</span>
-                            <div class="text-2xl">🚀</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Projeto App</h3>
-                        <p class="text-gray-300 mb-6">
-                            Estrutura de app web focada em UX e organização de dados.
+                <!-- Serviço 2 -->
+                <div class="service-card p-8 rounded-none transform skew-x-[-12deg] border-2 border-[#D4FF00]">
+                    <div class="transform skew-x-[12deg]">
+                        <h3 class="text-2xl font-black text-white mb-4">Site Institucional</h3>
+                        <p class="text-gray-300 mb-6 font-light">
+                            Site completo com até 5 páginas, ideal para empresas e profissionais que precisam de presença online completa.
                         </p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Next.js</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">TypeScript</span>
-                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Tailwind</span>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Até 5 páginas (Home, Sobre, Serviços, Portfólio, Contato)
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                SEO completo otimizado
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Integração Google Analytics
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Sistema de contato profissional
+                            </div>
                         </div>
-                        <a href="https://projeto-app-iota.vercel.app/" 
-                           target="_blank"
-                           class="inline-block w-full text-center px-6 py-3 neon-bg text-black font-bold hover:bg-opacity-90">
-                            Ver Projeto
-                        </a>
+                        <div class="pt-6 border-t border-gray-800">
+                            <div class="price-tag">R$ 900</div>
+                            <div class="text-gray-400 text-sm">À vista ou 3x R$ 320</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- More Projects CTA -->
-            <div class="text-center mt-16">
-                <a href="https://github.com/EnzzoGomes" 
-                   target="_blank"
-                   class="inline-flex items-center gap-3 px-8 py-4 border-2 neon-border text-white hover:neon-bg hover:text-black">
-                    <span>Ver todos os projetos no GitHub</span>
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
+                
+                <!-- Serviço 3 -->
+                <div class="service-card p-8 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg]">
+                        <h3 class="text-2xl font-black text-white mb-4">Site Institucional Avançado</h3>
+                        <p class="text-gray-300 mb-6 font-light">
+                            Site completo com recursos avançados, blog integrado e painel administrativo para gestão de conteúdo.
+                        </p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Até 10 páginas + blog integrado
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Painel administrativo (CMS)
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                SEO avançado com monitoramento
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Integração WhatsApp Business
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-gray-800">
+                            <div class="price-tag">R$ 1.500</div>
+                            <div class="text-gray-400 text-sm">À vista ou 4x R$ 400</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Serviço 4 -->
+                <div class="service-card p-8 rounded-none transform skew-x-[-12deg]">
+                    <div class="transform skew-x-[12deg]">
+                        <h3 class="text-2xl font-black text-white mb-4">Manutenção Mensal</h3>
+                        <p class="text-gray-300 mb-6 font-light">
+                            Pacote mensal para manter seu site seguro, atualizado e com performance máxima.
+                        </p>
+                        <div class="space-y-4 mb-8">
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Backups semanais automáticos
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Atualizações de segurança
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Suporte técnico prioritário
+                            </div>
+                            <div class="flex items-center text-gray-300">
+                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
+                                Monitoramento de performance
+                            </div>
+                        </div>
+                        <div class="pt-6 border-t border-gray-800">
+                            <div class="price-tag">R$ 100</div>
+                            <div class="text-gray-400 text-sm">Por mês</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6 bg-gray">
+    <!-- Processo -->
+    <section class="py-20 px-6 bg-[#0B0B0B]">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl md:text-5xl font-black mb-6">
-                    <span class="neon-text">03 //</span>
-                    <span class="text-white"> CONTATO</span>
+                <h2 class="text-4xl md:text-5xl font-black italic mb-6 tracking-tighter">
+                    <span class="neon-text">Como Funciona</span>
                 </h2>
-                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
-                    Vamos trabalhar juntos no seu próximo projeto
+                <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                    Processo simples e transparente do início ao fim
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-12">
-                <!-- Contact Info -->
-                <div>
-                    <h3 class="text-2xl font-black text-white mb-8">Entre em Contato</h3>
-                    
-                    <div class="space-y-6">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
-                                <span class="text-black font-bold">✉️</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Email</h4>
-                                <a href="mailto:seuemail@exemplo.com" class="text-gray-300 hover:text-white">
-                                    seuemail@exemplo.com
-                                </a>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
-                                <span class="text-black font-bold">💼</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Serviços</h4>
-                                <p class="text-gray-300">
-                                    Desenvolvimento de sites, aplicações web e soluções com IA
-                                </p>
-                            </div>
-                        </div>
-                        
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
-                                <span class="text-black font-bold">⚡</span>
-                            </div>
-                            <div>
-                                <h4 class="text-lg font-bold text-white mb-1">Disponibilidade</h4>
-                                <p class="text-gray-300">
-                                    Aceitando novos projetos. Resposta em até 24h.
-                                </p>
-                            </div>
-                        </div>
+            <div class="grid md:grid-cols-4 gap-8">
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full border-2 border-[#D4FF00] flex items-center justify-center mx-auto mb-6">
+                        <div class="text-2xl font-black neon-text">1</div>
                     </div>
-                    
-                    <!-- Social Links -->
-                    <div class="mt-12">
-                        <h4 class="text-lg font-bold text-white mb-4">Conecte-se</h4>
-                        <div class="flex gap-4">
-                            <a href="https://github.com/EnzzoGomes" 
-                               target="_blank"
-                               class="w-12 h-12 border border-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:border-neon hover:text-white">
-                                <span class="text-xl">G</span>
-                            </a>
-                            <a href="https://linkedin.com" 
-                               target="_blank"
-                               class="w-12 h-12 border border-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:border-neon hover:text-white">
-                                <span class="text-xl">in</span>
-                            </a>
-                        </div>
-                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">Briefing</h3>
+                    <p class="text-gray-300 font-light">Conversa sobre objetivos e necessidades do projeto</p>
                 </div>
                 
-                <!-- Contact Form -->
-                <div class="bg-dark p-8 rounded-lg border border-gray-700">
-                    <h3 class="text-2xl font-black text-white mb-6">Envie uma mensagem</h3>
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full border-2 border-[#D4FF00] flex items-center justify-center mx-auto mb-6">
+                        <div class="text-2xl font-black neon-text">2</div>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">Proposta</h3>
+                    <p class="text-gray-300 font-light">Envio do orçamento detalhado e cronograma</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full border-2 border-[#D4FF00] flex items-center justify-center mx-auto mb-6">
+                        <div class="text-2xl font-black neon-text">3</div>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">Desenvolvimento</h3>
+                    <p class="text-gray-300 font-light">Criação do site com atualizações regulares</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-20 h-20 rounded-full border-2 border-[#D4FF00] flex items-center justify-center mx-auto mb-6">
+                        <div class="text-2xl font-black neon-text">4</div>
+                    </div>
+                    <h3 class="text-xl font-black text-white mb-3">Entrega</h3>
+                    <p class="text-gray-300 font-light">Testes, ajustes finais e treinamento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contato -->
+    <section id="contato" class="py-20 px-6">
+        <div class="max-w-4xl mx-auto">
+            <div class="service-card p-8 md:p-12 rounded-none transform skew-x-[-12deg]">
+                <div class="transform skew-x-[12deg]">
+                    <div class="text-center mb-12">
+                        <h2 class="text-4xl md:text-5xl font-black italic mb-6 tracking-tighter">
+                            <span class="neon-text">Solicite Seu Orçamento</span>
+                        </h2>
+                        <p class="text-xl text-gray-300 max-w-2xl mx-auto font-light">
+                            Preencha o formulário abaixo e receba uma proposta detalhada em até 24h
+                        </p>
+                    </div>
                     
-                    <form id="contactForm" class="space-y-6">
+                    <form id="orcamentoForm" class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <input type="text" 
+                                       placeholder="Seu nome" 
+                                       required
+                                       class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-700 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00]">
+                            </div>
+                            <div>
+                                <input type="email" 
+                                       placeholder="Seu email" 
+                                       required
+                                       class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-700 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00]">
+                            </div>
+                        </div>
+                        
                         <div>
                             <input type="text" 
-                                   placeholder="Seu nome" 
-                                   required
-                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
+                                   placeholder="Empresa (opcional)" 
+                                   class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-700 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00]">
                         </div>
                         
                         <div>
-                            <input type="email" 
-                                   placeholder="Seu email" 
-                                   required
-                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
-                        </div>
-                        
-                        <div>
-                            <select class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-neon">
-                                <option value="">Tipo de projeto</option>
-                                <option value="site">Site Institucional</option>
-                                <option value="ecommerce">E-commerce</option>
-                                <option value="app">Aplicação Web</option>
-                                <option value="ia">Solução com IA</option>
-                                <option value="outro">Outro</option>
+                            <select class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-700 rounded-none text-white focus:outline-none focus:border-[#D4FF00]">
+                                <option value="">Qual serviço tem interesse?</option>
+                                <option value="landing">Landing Page - R$ 500</option>
+                                <option value="institucional">Site Institucional - R$ 900</option>
+                                <option value="avancado">Site Avançado - R$ 1.500</option>
+                                <option value="manutencao">Manutenção - R$ 100/mês</option>
+                                <option value="outro">Outro (especifique abaixo)</option>
                             </select>
                         </div>
                         
                         <div>
                             <textarea 
-                                placeholder="Descreva seu projeto..." 
+                                placeholder="Conte-me sobre seu projeto, necessidades e objetivos..." 
                                 rows="4"
-                                required
-                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon resize-none"></textarea>
+                                class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-700 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00] resize-none"></textarea>
+                        </div>
+                        
+                        <div>
+                            <label class="flex items-start">
+                                <input type="checkbox" required class="mt-1 mr-3">
+                                <span class="text-gray-300 text-sm font-light">
+                                    Concordo em receber a proposta por email e que meus dados serão utilizados apenas para este orçamento.
+                                </span>
+                            </label>
                         </div>
                         
                         <button type="submit" 
-                                class="w-full px-6 py-4 neon-bg text-black font-bold hover:bg-opacity-90 rounded-lg">
-                            Enviar Mensagem
+                                class="w-full px-8 py-4 neon-bg text-black font-bold text-lg hover:opacity-90 transform skew-x-[-12deg]">
+                            <span class="block transform skew-x-[12deg]">Enviar Solicitação</span>
                         </button>
+                        
+                        <p class="text-gray-400 text-sm text-center font-light">
+                            Você receberá uma cópia da proposta no seu email. Resposta em até 24h úteis.
+                        </p>
                     </form>
                 </div>
             </div>
@@ -369,25 +409,27 @@
         <div class="max-w-7xl mx-auto">
             <div class="flex flex-col md:flex-row justify-between items-center gap-8">
                 <div>
-                    <div class="text-2xl font-black mb-2">
+                    <div class="text-2xl font-black italic mb-2">
                         <span class="text-white">ENZZO</span>
-                        <span class="neon-text">GOMES</span>
+                        <span class="neon-text">DEV</span>
                     </div>
-                    <p class="text-gray-500">Full Stack Developer & AI Specialist</p>
+                    <p class="text-gray-400 font-light">Desenvolvimento de Sites Profissionais</p>
                 </div>
                 
                 <div class="text-center">
                     <p class="text-gray-400">
                         &copy; 2024 Enzzo Gomes. Todos os direitos reservados.
                     </p>
-                    <p class="text-gray-500 text-sm mt-2">
-                        Desenvolvido com código limpo e alta performance
+                    <p class="text-gray-500 text-sm mt-2 font-light">
+                        Sites a partir de R$ 500 • Preços transparentes
                     </p>
                 </div>
                 
-                <div>
-                    <a href="#home" class="px-4 py-2 border border-gray-700 text-gray-300 hover:border-neon hover:text-white">
-                        Voltar ao topo ↑
+                <div class="flex gap-4">
+                    <a href="https://portifolio-gamma-snowy-87.vercel.app/" 
+                       target="_blank"
+                       class="px-4 py-2 border border-gray-700 text-gray-300 hover:border-[#D4FF00] hover:text-white transition-all font-light">
+                        Meu Portfólio
                     </a>
                 </div>
             </div>
@@ -395,14 +437,12 @@
     </footer>
 
     <script>
-        // Smooth scroll para links internos
+        // Navegação suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
-                
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
                     window.scrollTo({
@@ -414,57 +454,34 @@
         });
         
         // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Aqui você pode adicionar o código para enviar o formulário
-            // Para um backend ou serviço de email como Formspree, EmailJS, etc.
+            // Aqui você vai integrar com EmailJS ou outro serviço
+            // Configuração do EmailJS:
+            // 1. Crie conta em https://www.emailjs.com/
+            // 2. Pegue suas chaves
+            // 3. Substitua no código
             
-            alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            alert('✅ Solicitação enviada com sucesso!\n\nVocê receberá a proposta detalhada em seu email em até 24h.\n\nEnzzo Gomes');
             this.reset();
         });
         
-        // Adiciona classe ativa ao link de navegação quando na seção
-        window.addEventListener('scroll', function() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a[href^="#"]');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollY >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
+        // Adiciona efeito hover nos cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.zIndex = '100';
             });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('text-white', 'neon-text');
-                link.classList.add('text-gray-300');
-                
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.remove('text-gray-300');
-                    link.classList.add('text-white', 'neon-text');
-                }
+            card.addEventListener('mouseleave', () => {
+                card.style.zIndex = '10';
             });
         });
         
-        // Mobile menu toggle
-        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
-            const nav = document.querySelector('nav .hidden.md\\:flex');
-            if (nav) {
-                nav.classList.toggle('hidden');
-                nav.classList.toggle('flex');
-                nav.classList.toggle('flex-col');
-                nav.classList.toggle('absolute');
-                nav.classList.toggle('top-full');
-                nav.classList.toggle('left-0');
-                nav.classList.toggle('right-0');
-                nav.classList.toggle('bg-dark');
-                nav.classList.toggle('p-8');
-                nav.classList.toggle('gap-4');
+        // Atualiza o ano no footer
+        document.addEventListener('DOMContentLoaded', () => {
+            const yearSpan = document.querySelector('footer p.text-gray-400');
+            if (yearSpan) {
+                yearSpan.textContent = yearSpan.textContent.replace('2024', new Date().getFullYear());
             }
         });
     </script>
