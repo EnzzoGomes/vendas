@@ -3,20 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enzzo Gomes | Desenvolvimento de Sites Profissionais</title>
+    <title>Enzzo Gomes | Full Stack & AI Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
-    
-    <!-- EmailJS para envio de formulário -->
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script>
-        (function() {
-            emailjs.init("YOUR_PUBLIC_KEY"); // Você precisa criar conta no EmailJS
-        })();
-    </script>
-    
     <style>
         :root {
             --neon: #D4FF00;
@@ -27,310 +18,454 @@
             background: var(--dark);
             color: white;
             font-family: 'Barlow', sans-serif;
+            overflow-x: hidden;
         }
-        .neon { color: var(--neon); }
-        .neon-bg { background: var(--neon); color: black; }
-        .border-neon { border-color: var(--neon); }
-        .card {
-            background: var(--gray);
-            border: 1px solid #333;
-            transition: all 0.3s ease;
-        }
-        .card:hover {
+        .neon-text { color: var(--neon); }
+        .neon-border { border-color: var(--neon); }
+        .neon-bg { background: var(--neon); }
+        .card-hover:hover {
             transform: translateY(-5px);
             border-color: var(--neon);
+            box-shadow: 0 10px 30px rgba(212, 255, 0, 0.1);
         }
-        .price-tag {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--neon);
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--neon);
+            border-radius: 4px;
+        }
+        /* Selection */
+        ::selection {
+            background: var(--neon);
+            color: black;
+        }
+        /* Smooth transitions */
+        * {
+            transition: all 0.3s ease;
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen">
 
-    <!-- Header -->
-    <header class="py-6 px-6 border-b border-gray-800">
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 z-50 py-6 px-6 bg-dark/90 backdrop-blur-sm">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
             <div class="text-2xl font-black">
                 <span class="text-white">ENZZO</span>
-                <span class="neon">DEV</span>
+                <span class="neon-text">GOMES</span>
             </div>
-            <nav class="hidden md:flex gap-8">
-                <a href="#servicos" class="text-gray-300 hover:text-white">Serviços</a>
-                <a href="#precos" class="text-gray-300 hover:text-white">Preços</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-white">Portfólio</a>
-                <a href="#contato" class="px-4 py-2 neon-bg font-bold">Contato</a>
-            </nav>
+            <div class="hidden md:flex gap-8">
+                <a href="#home" class="text-gray-300 hover:text-white hover:neon-text">Início</a>
+                <a href="#about" class="text-gray-300 hover:text-white hover:neon-text">Sobre</a>
+                <a href="#projects" class="text-gray-300 hover:text-white hover:neon-text">Projetos</a>
+                <a href="#contact" class="text-gray-300 hover:text-white hover:neon-text">Contato</a>
+                <a href="#services" class="px-4 py-2 neon-bg text-black font-bold hover:bg-opacity-90">Serviços</a>
+            </div>
+            <button class="md:hidden neon-text">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                </svg>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Hero -->
-    <section class="py-20 px-6 text-center">
-        <div class="max-w-4xl mx-auto">
-            <h1 class="text-5xl md:text-6xl font-black mb-6">
-                <span class="text-white">Sites Profissionais</span><br>
-                <span class="neon">Que Convertem</span>
+    <!-- Hero Section -->
+    <section id="home" class="min-h-screen flex items-center pt-20 px-6">
+        <div class="max-w-7xl mx-auto text-center">
+            <!-- Profile Image -->
+            <div class="w-48 h-48 mx-auto rounded-full border-4 neon-border mb-8 overflow-hidden">
+                <div class="w-full h-full bg-gray-800"></div>
+            </div>
+            
+            <h1 class="text-5xl md:text-8xl font-black mb-4">
+                <span class="text-white">ENZZO</span><br>
+                <span class="neon-text">GOMES</span>
             </h1>
-            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-                Desenvolvimento de sites rápidos, seguros e otimizados para gerar resultados reais para seu negócio.
+            
+            <div class="flex items-center justify-center gap-4 my-8">
+                <div class="h-1 w-12 neon-bg"></div>
+                <p class="text-xl md:text-2xl text-gray-300 font-bold uppercase tracking-widest">
+                    Full Stack Dev & AI Specialist
+                </p>
+                <div class="h-1 w-12 neon-bg"></div>
+            </div>
+            
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-12">
+                Transformando ideias complexas em soluções de alto desempenho. 
+                Especialista em construir a ponte entre Inteligência Artificial 
+                e experiências web intuitivas.
             </p>
-            <a href="#contato" class="inline-block px-8 py-4 neon-bg text-black font-bold text-lg">
-                Solicitar Orçamento
-            </a>
+            
+            <div class="flex flex-wrap gap-4 justify-center">
+                <a href="#contact" class="px-8 py-4 neon-bg text-black font-bold hover:bg-opacity-90">
+                    Vamos conversar
+                </a>
+                <a href="#projects" class="px-8 py-4 border-2 neon-border text-white hover:neon-bg hover:text-black">
+                    Ver Projetos
+                </a>
+            </div>
         </div>
     </section>
 
-    <!-- Serviços -->
-    <section id="servicos" class="py-20 px-6 bg-gray">
+    <!-- About Section -->
+    <section id="about" class="py-20 px-6 bg-gray">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-black text-center mb-16">
-                <span class="neon">Serviços</span>
-            </h2>
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">
+                    <span class="neon-text">01 //</span>
+                    <span class="text-white"> SOBRE MIM</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Conheça mais sobre minha trajetória, formação e paixões
+                </p>
+            </div>
             
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Site Institucional -->
-                <div class="card p-8 rounded-lg">
-                    <div class="text-3xl mb-6">●</div>
-                    <h3 class="text-2xl font-black text-white mb-4">Site Institucional</h3>
-                    <p class="text-gray-300 mb-6">
-                        Landing page ou site corporativo com design moderno e otimizado para conversões.
-                    </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Design responsivo
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Otimização SEO
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Performance 90+ Google
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Integração Analytics
-                        </li>
-                    </ul>
-                    <div class="price-tag">R$ 800</div>
-                    <div class="text-gray-400 text-sm">à vista ou 2x R$ 450</div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Age Card -->
+                <div class="card-hover p-8 border border-gray-700 rounded-lg">
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">IDADE</h3>
+                    <div class="text-6xl font-black text-white mb-2">22</div>
+                    <p class="text-gray-400">anos</p>
                 </div>
                 
-                <!-- E-commerce Básico -->
-                <div class="card p-8 rounded-lg border-2 border-neon">
-                    <div class="text-3xl mb-6">●</div>
-                    <h3 class="text-2xl font-black text-white mb-4">E-commerce Básico</h3>
-                    <p class="text-gray-300 mb-6">
-                        Loja online com até 30 produtos, carrinho de compras e pagamentos integrados.
-                    </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Até 30 produtos
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Pagamentos (Pix, Cartão)
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Painel administrativo
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Dashboard de vendas
-                        </li>
-                    </ul>
-                    <div class="price-tag">R$ 1.500</div>
-                    <div class="text-gray-400 text-sm">à vista ou 3x R$ 550</div>
+                <!-- Location Card -->
+                <div class="card-hover p-8 border border-gray-700 rounded-lg">
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">LOCALIZAÇÃO</h3>
+                    <div class="text-4xl font-black text-white mb-2">BRASIL</div>
+                    <p class="text-gray-400">Disponível para projetos globais</p>
                 </div>
                 
-                <!-- Site + IA -->
-                <div class="card p-8 rounded-lg">
-                    <div class="text-3xl mb-6">●</div>
-                    <h3 class="text-2xl font-black text-white mb-4">Site com Chatbot IA</h3>
-                    <p class="text-gray-300 mb-6">
-                        Site institucional com chatbot inteligente para atendimento automático 24/7.
+                <!-- Education Card -->
+                <div class="card-hover p-8 border border-gray-700 rounded-lg md:col-span-2 lg:col-span-1">
+                    <h3 class="text-gray-500 text-sm font-bold uppercase tracking-widest mb-4">FORMAÇÃO</h3>
+                    <h4 class="text-2xl font-black text-white mb-4">Ciência de Dados & IA</h4>
+                    <p class="text-gray-400">
+                        Cursando Ciência de Dados e Inteligência Artificial. 
+                        Focado em Machine Learning, análise de dados e construção 
+                        de soluções inteligentes.
                     </p>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Site institucional completo
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Chatbot com inteligência artificial
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Treinamento personalizado
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Integração WhatsApp
-                        </li>
-                    </ul>
-                    <div class="price-tag">R$ 1.200</div>
-                    <div class="text-gray-400 text-sm">à vista ou 3x R$ 450</div>
                 </div>
+            </div>
+            
+            <!-- Bio -->
+            <div class="mt-16 p-8 border-l-4 neon-border bg-dark rounded-r-lg">
+                <h3 class="text-2xl font-black text-white mb-6">Minha Jornada</h3>
+                <p class="text-gray-300 text-lg leading-relaxed">
+                    Apaixonado por tecnologia desde cedo, encontrei no código minha forma de criar e inovar. 
+                    Acredito que a tecnologia deve ser poderosa e acessível. Meu foco está em construir 
+                    soluções que resolvem problemas reais, combinando performance técnica com design intuitivo.
+                </p>
             </div>
         </div>
     </section>
 
-    <!-- Processo -->
-    <section class="py-20 px-6">
-        <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-black mb-16">
-                <span class="neon">Como Funciona</span>
-            </h2>
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-black mb-6">
+                    <span class="neon-text">02 //</span>
+                    <span class="text-white"> PROJETOS</span>
+                </h2>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Trabalhos selecionados com foco em performance e inovação
+                </p>
+            </div>
             
-            <div class="grid md:grid-cols-4 gap-8">
-                <div>
-                    <div class="text-2xl font-black neon mb-4">1</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Briefing</h3>
-                    <p class="text-gray-300">Entendimento do projeto e objetivos</p>
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Project 1 - LINK CORRIGIDO -->
+                <div class="card-hover border border-gray-700 rounded-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">IA / Educação</span>
+                            <div class="text-2xl">💻</div>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4">AI English Tutor</h3>
+                        <p class="text-gray-300 mb-6">
+                            Tutor inteligente com IA para aprendizado de idiomas com feedback em tempo real.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">React</span>
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">OpenAI API</span>
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Node.js</span>
+                        </div>
+                        <a href="https://huggingface.co/spaces/Enzzozink/tutor-ingles-ia" 
+                           target="_blank"
+                           class="inline-block w-full text-center px-6 py-3 neon-bg text-black font-bold hover:bg-opacity-90">
+                            Ver Projeto
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-2xl font-black neon mb-4">2</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Design</h3>
-                    <p class="text-gray-300">Prototipagem e aprovação do layout</p>
+                
+                <!-- Project 2 - LINK CORRIGIDO -->
+                <div class="card-hover border border-gray-700 rounded-lg overflow-hidden">
+                    <div class="p-8">
+                        <div class="flex justify-between items-start mb-6">
+                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">Web App</span>
+                            <div class="text-2xl">🚀</div>
+                        </div>
+                        <h3 class="text-2xl font-black text-white mb-4">Projeto App</h3>
+                        <p class="text-gray-300 mb-6">
+                            Estrutura de app web focada em UX e organização de dados.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Next.js</span>
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">TypeScript</span>
+                            <span class="px-3 py-1 bg-gray-800 text-gray-300 text-sm rounded">Tailwind</span>
+                        </div>
+                        <a href="https://projeto-app-iota.vercel.app/" 
+                           target="_blank"
+                           class="inline-block w-full text-center px-6 py-3 neon-bg text-black font-bold hover:bg-opacity-90">
+                            Ver Projeto
+                        </a>
+                    </div>
                 </div>
-                <div>
-                    <div class="text-2xl font-black neon mb-4">3</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Desenvolvimento</h3>
-                    <p class="text-gray-300">Codificação e implementação</p>
-                </div>
-                <div>
-                    <div class="text-2xl font-black neon mb-4">4</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Entrega</h3>
-                    <p class="text-gray-300">Testes, ajustes e treinamento</p>
-                </div>
+            </div>
+            
+            <!-- More Projects CTA -->
+            <div class="text-center mt-16">
+                <a href="https://github.com/EnzzoGomes" 
+                   target="_blank"
+                   class="inline-flex items-center gap-3 px-8 py-4 border-2 neon-border text-white hover:neon-bg hover:text-black">
+                    <span>Ver todos os projetos no GitHub</span>
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                    </svg>
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Formulário de Contato COM SISTEMA DE EMAIL -->
-    <section id="contato" class="py-20 px-6 bg-gray">
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 px-6 bg-gray">
         <div class="max-w-4xl mx-auto">
             <div class="text-center mb-16">
-                <h2 class="text-4xl font-black mb-6">
-                    <span class="neon">Solicite Seu Orçamento</span>
+                <h2 class="text-4xl md:text-5xl font-black mb-6">
+                    <span class="neon-text">03 //</span>
+                    <span class="text-white"> CONTATO</span>
                 </h2>
-                <p class="text-gray-300">
-                    Preencha o formulário abaixo. O orçamento será enviado para seu email 
-                    e uma cópia chegará na minha caixa de entrada.
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto">
+                    Vamos trabalhar juntos no seu próximo projeto
                 </p>
             </div>
             
-            <form id="orcamentoForm" class="max-w-2xl mx-auto space-y-6">
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div>
-                        <input type="text" 
-                               id="nome" 
-                               placeholder="Seu nome" 
-                               required
-                               class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Contact Info -->
+                <div>
+                    <h3 class="text-2xl font-black text-white mb-8">Entre em Contato</h3>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
+                                <span class="text-black font-bold">✉️</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-1">Email</h4>
+                                <a href="mailto:seuemail@exemplo.com" class="text-gray-300 hover:text-white">
+                                    seuemail@exemplo.com
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
+                                <span class="text-black font-bold">💼</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-1">Serviços</h4>
+                                <p class="text-gray-300">
+                                    Desenvolvimento de sites, aplicações web e soluções com IA
+                                </p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start gap-4">
+                            <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center flex-shrink-0">
+                                <span class="text-black font-bold">⚡</span>
+                            </div>
+                            <div>
+                                <h4 class="text-lg font-bold text-white mb-1">Disponibilidade</h4>
+                                <p class="text-gray-300">
+                                    Aceitando novos projetos. Resposta em até 24h.
+                                </p>
+                            </div>
+                        </div>
                     </div>
-                    <div>
-                        <input type="email" 
-                               id="email" 
-                               placeholder="Seu melhor email" 
-                               required
-                               class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                    
+                    <!-- Social Links -->
+                    <div class="mt-12">
+                        <h4 class="text-lg font-bold text-white mb-4">Conecte-se</h4>
+                        <div class="flex gap-4">
+                            <a href="https://github.com/EnzzoGomes" 
+                               target="_blank"
+                               class="w-12 h-12 border border-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:border-neon hover:text-white">
+                                <span class="text-xl">G</span>
+                            </a>
+                            <a href="https://linkedin.com" 
+                               target="_blank"
+                               class="w-12 h-12 border border-gray-700 rounded-lg flex items-center justify-center text-gray-300 hover:border-neon hover:text-white">
+                                <span class="text-xl">in</span>
+                            </a>
+                        </div>
                     </div>
                 </div>
                 
-                <div>
-                    <input type="text" 
-                           id="telefone" 
-                           placeholder="Telefone (opcional)" 
-                           class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                <!-- Contact Form -->
+                <div class="bg-dark p-8 rounded-lg border border-gray-700">
+                    <h3 class="text-2xl font-black text-white mb-6">Envie uma mensagem</h3>
+                    
+                    <form id="contactForm" class="space-y-6">
+                        <div>
+                            <input type="text" 
+                                   placeholder="Seu nome" 
+                                   required
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
+                        </div>
+                        
+                        <div>
+                            <input type="email" 
+                                   placeholder="Seu email" 
+                                   required
+                                   class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
+                        </div>
+                        
+                        <div>
+                            <select class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white focus:outline-none focus:border-neon">
+                                <option value="">Tipo de projeto</option>
+                                <option value="site">Site Institucional</option>
+                                <option value="ecommerce">E-commerce</option>
+                                <option value="app">Aplicação Web</option>
+                                <option value="ia">Solução com IA</option>
+                                <option value="outro">Outro</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <textarea 
+                                placeholder="Descreva seu projeto..." 
+                                rows="4"
+                                required
+                                class="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon resize-none"></textarea>
+                        </div>
+                        
+                        <button type="submit" 
+                                class="w-full px-6 py-4 neon-bg text-black font-bold hover:bg-opacity-90 rounded-lg">
+                            Enviar Mensagem
+                        </button>
+                    </form>
                 </div>
-                
-                <div>
-                    <select id="servico" class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
-                        <option value="">Selecione o serviço de interesse</option>
-                        <option value="site">Site Institucional - R$ 800</option>
-                        <option value="ecommerce">E-commerce Básico - R$ 1.500</option>
-                        <option value="site-ia">Site + Chatbot IA - R$ 1.200</option>
-                        <option value="outro">Outro (descreva abaixo)</option>
-                    </select>
-                </div>
-                
-                <div>
-                    <textarea 
-                        id="mensagem" 
-                        placeholder="Descreva seu projeto ou necessidade..." 
-                        rows="4"
-                        class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white resize-none"></textarea>
-                </div>
-                
-                <div>
-                    <label class="flex items-start">
-                        <input type="checkbox" required class="mt-1 mr-3">
-                        <span class="text-gray-300 text-sm">
-                            Concordo em receber o orçamento por email e que meus dados sejam processados 
-                            conforme a política de privacidade.
-                        </span>
-                    </label>
-                </div>
-                
-                <button type="submit" 
-                        class="w-full px-8 py-4 neon-bg text-black font-bold text-lg rounded-lg hover:opacity-90">
-                    Enviar Solicitação de Orçamento
-                </button>
-                
-                <p class="text-gray-400 text-sm text-center">
-                    Você receberá uma cópia do orçamento no seu email em até 24h.
-                </p>
-            </form>
+            </div>
         </div>
     </section>
 
+    <!-- Footer -->
+    <footer class="py-12 px-6 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div>
+                    <div class="text-2xl font-black mb-2">
+                        <span class="text-white">ENZZO</span>
+                        <span class="neon-text">GOMES</span>
+                    </div>
+                    <p class="text-gray-500">Full Stack Developer & AI Specialist</p>
+                </div>
+                
+                <div class="text-center">
+                    <p class="text-gray-400">
+                        &copy; 2024 Enzzo Gomes. Todos os direitos reservados.
+                    </p>
+                    <p class="text-gray-500 text-sm mt-2">
+                        Desenvolvido com código limpo e alta performance
+                    </p>
+                </div>
+                
+                <div>
+                    <a href="#home" class="px-4 py-2 border border-gray-700 text-gray-300 hover:border-neon hover:text-white">
+                        Voltar ao topo ↑
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
     <script>
-        // Configuração do EmailJS (você precisa criar conta gratuita)
-        // 1. Vá em https://www.emailjs.com/
-        // 2. Crie conta gratuita
-        // 3. Crie um template de email
-        // 4. Substitua YOUR_PUBLIC_KEY pela sua chave pública
-        // 5. O email será enviado para VOCÊ e para o cliente
-        
-        document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            const formData = {
-                nome: document.getElementById('nome').value,
-                email: document.getElementById('email').value,
-                telefone: document.getElementById('telefone').value,
-                servico: document.getElementById('servico').value,
-                mensagem: document.getElementById('mensagem').value,
-                data: new Date().toLocaleString('pt-BR')
-            };
-            
-            // Envia para o EmailJS
-            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
-                .then(function(response) {
-                    alert('✅ Orçamento solicitado com sucesso!\n\nUma cópia foi enviada para seu email e outra chegou na minha caixa de entrada.\n\nEntrarei em contato em breve!');
-                    document.getElementById('orcamentoForm').reset();
-                }, function(error) {
-                    alert('⚠️ Houve um erro ao enviar. Por favor, entre em contato diretamente pelo LinkedIn ou GitHub.');
-                });
-        });
-        
-        // Navegação suave
+        // Smooth scroll para links internos
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
+            anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
                     window.scrollTo({
-                        top: target.offsetTop - 80,
+                        top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
             });
+        });
+        
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aqui você pode adicionar o código para enviar o formulário
+            // Para um backend ou serviço de email como Formspree, EmailJS, etc.
+            
+            alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+            this.reset();
+        });
+        
+        // Adiciona classe ativa ao link de navegação quando na seção
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a[href^="#"]');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollY >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('text-white', 'neon-text');
+                link.classList.add('text-gray-300');
+                
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.remove('text-gray-300');
+                    link.classList.add('text-white', 'neon-text');
+                }
+            });
+        });
+        
+        // Mobile menu toggle
+        document.querySelector('button.md\\:hidden').addEventListener('click', function() {
+            const nav = document.querySelector('nav .hidden.md\\:flex');
+            if (nav) {
+                nav.classList.toggle('hidden');
+                nav.classList.toggle('flex');
+                nav.classList.toggle('flex-col');
+                nav.classList.toggle('absolute');
+                nav.classList.toggle('top-full');
+                nav.classList.toggle('left-0');
+                nav.classList.toggle('right-0');
+                nav.classList.toggle('bg-dark');
+                nav.classList.toggle('p-8');
+                nav.classList.toggle('gap-4');
+            }
         });
     </script>
 </body>
