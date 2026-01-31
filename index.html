@@ -11,34 +11,34 @@
     <style>
         /* ===== RESET E VARIÁVEIS ===== */
         :root {
-            /* Cores Principais - AZUL FORTE (mantido igual) */
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --primary-light: #60a5fa;
-            --secondary-color: #3b82f6;
-            --accent-color: #06b6d4;
+            /* Cores Principais - TEMA VERDE & PRETO */
+            --primary-color: #10b981;
+            --primary-dark: #059669;
+            --primary-light: #34d399;
+            --secondary-color: #000000;
+            --accent-color: #0ea5e9;
             
-            /* Tons de Background */
-            --bg-dark: #0f172a;
-            --bg-darker: #020617;
-            --bg-card: #1e293b;
-            --bg-card-hover: #334155;
+            /* Tons de Background - ESCALA DE PRETO/CINZA */
+            --bg-dark: #000000;
+            --bg-darker: #0a0a0a;
+            --bg-card: #111111;
+            --bg-card-hover: #1a1a1a;
             
             /* Tons de Texto */
-            --text-light: #f8fafc;
-            --text-gray: #cbd5e1;
-            --text-dark: #64748b;
+            --text-light: #ffffff;
+            --text-gray: #d4d4d4;
+            --text-dark: #a3a3a3;
             
             /* Bordas */
-            --border-color: #334155;
-            --border-light: #475569;
+            --border-color: #262626;
+            --border-light: #404040;
             
             /* Sombras */
             --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-blue: 0 10px 30px -5px rgba(37, 99, 235, 0.3);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+            --shadow-green: 0 10px 30px -5px rgba(16, 185, 129, 0.3);
             
             /* Espaçamentos */
             --space-xs: 0.5rem;
@@ -89,8 +89,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 15% 50%, rgba(16, 185, 129, 0.03) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(0, 0, 0, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
@@ -105,7 +105,7 @@
 
         h1 {
             font-size: 3.75rem;
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
@@ -140,6 +140,7 @@
         p {
             margin-bottom: var(--space-md);
             font-size: 1.125rem;
+            max-width: 65ch;
         }
 
         .section-subtitle {
@@ -171,7 +172,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            background-color: rgba(15, 23, 42, 0.95);
+            background-color: rgba(0, 0, 0, 0.95);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid var(--border-color);
             z-index: 1000;
@@ -205,7 +206,7 @@
         }
 
         .logo i {
-            color: var(--secondary-color);
+            color: var(--primary-light);
             font-size: 1.5rem;
         }
 
@@ -267,7 +268,7 @@
 
         .nav-cta:hover {
             transform: translateY(-2px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-green);
         }
 
         .mobile-menu-btn {
@@ -364,7 +365,7 @@
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-green);
         }
 
         .btn-secondary {
@@ -376,7 +377,7 @@
         .btn-secondary:hover {
             border-color: var(--primary-color);
             transform: translateY(-3px);
-            background-color: rgba(37, 99, 235, 0.05);
+            background-color: rgba(16, 185, 129, 0.05);
         }
 
         .hero-visual {
@@ -386,7 +387,7 @@
             transform: translateY(-50%);
             width: 45%;
             height: 80%;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 0, 0, 0.1));
             border-radius: var(--radius-xl);
             overflow: hidden;
             display: flex;
@@ -432,7 +433,7 @@
 
         .dot-red { background-color: #f87171; }
         .dot-yellow { background-color: #fbbf24; }
-        .dot-green { background-color: #10b981; }
+        .dot-green { background-color: var(--primary-color); }
 
         .window-content {
             padding: var(--space-lg);
@@ -446,7 +447,7 @@
         }
 
         .code-line.comment { color: #64748b; }
-        .code-line.tag { color: #60a5fa; }
+        .code-line.tag { color: var(--primary-light); }
         .code-line.attr { color: #a78bfa; }
         .code-line.value { color: #34d399; }
 
@@ -480,7 +481,7 @@
         .service-card:hover {
             transform: translateY(-10px);
             border-color: var(--primary-color);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-green);
         }
 
         .service-card::before {
@@ -496,7 +497,7 @@
         .service-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 0, 0, 0.1));
             border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
@@ -593,12 +594,12 @@
 
         .portfolio-card:hover {
             transform: translateY(-10px);
-            box-shadow: var(--shadow-blue);
+            box-shadow: var(--shadow-green);
         }
 
         .portfolio-image {
             height: 220px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.2));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.2), rgba(0, 0, 0, 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -618,7 +619,7 @@
         }
 
         .tag {
-            background-color: rgba(37, 99, 235, 0.1);
+            background-color: rgba(16, 185, 129, 0.1);
             color: var(--primary-light);
             padding: 0.25rem 0.75rem;
             border-radius: var(--radius-full);
@@ -649,7 +650,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1), rgba(0, 0, 0, 0.1));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -692,7 +693,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
         }
 
         textarea.form-control {
@@ -792,6 +793,14 @@
             .contact-wrapper {
                 grid-template-columns: 1fr;
             }
+            
+            .hero h1 {
+                font-size: 3.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.15rem;
+            }
         }
 
         @media (max-width: 768px) {
@@ -821,8 +830,30 @@
                 visibility: visible;
             }
             
-            h1 { font-size: 2.5rem; }
-            .hero { padding-top: 8rem; }
+            h1 { 
+                font-size: 2.5rem;
+                line-height: 1.2;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+            
+            h3 {
+                font-size: 1.5rem;
+            }
+            
+            .hero { 
+                padding-top: 8rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
             
             .cta-buttons {
                 flex-direction: column;
@@ -832,16 +863,34 @@
             .btn {
                 width: 100%;
                 justify-content: center;
+                padding: 0.875rem 1.5rem;
+                font-size: 0.95rem;
             }
             
             .services-grid,
             .portfolio-grid {
                 grid-template-columns: 1fr;
+                gap: var(--space-lg);
             }
             
             .hero-stats {
                 justify-content: center;
                 text-align: center;
+                gap: var(--space-lg);
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+            
+            .service-card,
+            .portfolio-card,
+            .contact-form {
+                padding: var(--space-lg);
+            }
+            
+            section {
+                padding: var(--space-2xl) 0;
             }
         }
 
@@ -850,17 +899,32 @@
                 padding: 0 var(--space-md);
             }
             
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.75rem; }
-            
-            section {
-                padding: var(--space-2xl) 0;
+            h1 { 
+                font-size: 2rem;
             }
             
-            .service-card,
-            .portfolio-card,
-            .contact-form {
-                padding: var(--space-lg);
+            h2 { 
+                font-size: 1.75rem;
+            }
+            
+            h3 {
+                font-size: 1.3rem;
+            }
+            
+            p {
+                font-size: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .stat-number {
+                font-size: 1.75rem;
             }
             
             .process-step {
@@ -871,6 +935,12 @@
                 width: 50px;
                 height: 50px;
                 font-size: 1rem;
+            }
+            
+            .service-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
             }
         }
 
