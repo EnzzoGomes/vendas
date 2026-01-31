@@ -1099,9 +1099,11 @@
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#servicos">Serviços</a></li>
                 <li><a href="#processo">Processo</a></li>
-                <li><a href="#portfolio">Portfólio</a></li>
+                <!-- Link atualizado para portfólio externo -->
+                <li><a href="https://portifolioenzzogomes.vercel.app/" target="_blank">Portfólio</a></li>
                 <li><a href="#contato">Contato</a></li>
-                <li><a href="#portfolio" class="nav-cta">Ver Portfólio</a></li>
+                <!-- Botão CTA atualizado para portfólio externo -->
+                <li><a href="https://portifolioenzzogomes.vercel.app/" target="_blank" class="nav-cta">Ver Portfólio</a></li>
             </ul>
         </div>
     </header>
@@ -1368,6 +1370,8 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#processo">Processo</a></li>
+                        <!-- Link atualizado para portfólio externo -->
+                        <li><a href="https://portifolioenzzogomes.vercel.app/" target="_blank">Portfólio</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
@@ -1422,7 +1426,7 @@
             }
         });
 
-        // ===== SMOOTH SCROLL =====
+        // ===== SMOOTH SCROLL (apenas para links internos) =====
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1586,7 +1590,7 @@
             observer.observe(el);
         });
 
-        // ===== UPDATE ACTIVE NAV LINK ON SCROLL =====
+        // ===== UPDATE ACTIVE NAV LINK ON SCROLL (apenas para links internos) =====
         const sections = document.querySelectorAll('section[id]');
         window.addEventListener('scroll', () => {
             let current = '';
@@ -1601,7 +1605,8 @@
                 }
             });
 
-            document.querySelectorAll('.nav-links a').forEach(link => {
+            // Atualizar apenas links internos
+            document.querySelectorAll('.nav-links a[href^="#"]').forEach(link => {
                 link.classList.remove('active');
                 if (link.getAttribute('href') === `#${current}`) {
                     link.classList.add('active');
