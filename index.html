@@ -4,258 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ENZZOGOMES - Desenvolvimento de Sites Profissionais</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
-
-        body {
-            background-color: #0f172a;
-            color: #f1f5f9;
-            line-height: 1.6;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            padding: 25px 0;
-            border-bottom: 1px solid #1e293b;
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 20px;
-        }
-
-        .logo {
-            font-size: 28px;
-            font-weight: 800;
-            color: #60a5fa;
-            letter-spacing: 1px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #cbd5e1;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 16px;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #60a5fa;
-        }
-
-        .btn-portfolio {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 10px 22px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 15px;
-            transition: transform 0.3s;
-        }
-
-        .btn-portfolio:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Conteúdo Principal */
-        main {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            padding: 60px 0;
-        }
-
-        .hero-content {
-            max-width: 800px;
-        }
-
-        .hero-content h1 {
-            font-size: 3.2rem;
-            font-weight: 800;
-            margin-bottom: 20px;
-            background: linear-gradient(90deg, #60a5fa, #a78bfa);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            line-height: 1.1;
-        }
-
-        .hero-content p {
-            font-size: 1.25rem;
-            color: #cbd5e1;
-            margin-bottom: 40px;
-            max-width: 700px;
-        }
-
-        .cta-buttons {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
-            color: white;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-            transition: transform 0.3s, box-shadow 0.3s;
-            border: none;
-            cursor: pointer;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: #60a5fa;
-            padding: 14px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            display: inline-block;
-            border: 2px solid #334155;
-            transition: border-color 0.3s, transform 0.3s;
-        }
-
-        .btn-secondary:hover {
-            border-color: #60a5fa;
-            transform: translateY(-3px);
-        }
-
-        /* Footer */
-        footer {
-            padding: 30px 0;
-            border-top: 1px solid #1e293b;
-            text-align: center;
-            color: #94a3b8;
-            font-size: 14px;
-            margin-top: auto;
-        }
-
-        /* Responsivo */
-        @media (max-width: 768px) {
-            nav {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-            
-            .nav-links {
-                flex-wrap: wrap;
-                gap: 15px;
-                margin-top: 10px;
-            }
-            
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero-content p {
-                font-size: 1.1rem;
-            }
-            
-            .cta-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn-primary, .btn-secondary {
-                text-align: center;
-                width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-            
-            .nav-links {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .logo {
-                font-size: 24px;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <!-- Header / Navegação -->
-        <header>
-            <nav>
-                <div class="logo">ENZZOGOMES</div>
-                <ul class="nav-links">
-                    <li><a href="#servicos">SERVIÇOS</a></li>
-                    <li><a href="#processo">PROCESSO</a></li>
-                    <li><a href="#portfolio">PORTFÓLIO</a></li>
-                    <li><a href="#contato">CONTATO</a></li>
-                </ul>
-                <a href="#portfolio" class="btn-portfolio">VER PORTFÓLIO</a>
-            </nav>
-        </header>
-
-        <!-- Conteúdo Principal -->
-        <main>
-            <section class="hero-content">
-                <h1>Desenvolvimento de Sites Profissionais</h1>
-                <p>
-                    Crio sites modernos, rápidos e otimizados para converter visitantes em clientes. 
-                    Foco em performance, design intuitivo e resultados mensuráveis.
-                </p>
-                <div class="cta-buttons">
-                    <a href="#orcamento" class="btn-primary">Solicitar Orçamento →</a>
-                    <a href="#servicos" class="btn-secondary">Ver Serviços</a>
-                </div>
-            </section>
-        </main>
-
-        <!-- Footer -->
-        <footer>
-            <p>&copy; 2023 ENZZOGOMES. Todos os direitos reservados.</p>
-        </footer>
-    </div>
-</body>
-</html><!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ENZZOGOMES - Desenvolvimento de Sites Profissionais</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -263,11 +11,11 @@
     <style>
         /* ===== RESET E VARIÁVEIS ===== */
         :root {
-            /* Cores Principais */
-            --primary-color: #3b82f6;
+            /* Cores Principais - AZUL FORTE (mantido igual) */
+            --primary-color: #2563eb;
             --primary-dark: #1d4ed8;
             --primary-light: #60a5fa;
-            --secondary-color: #8b5cf6;
+            --secondary-color: #3b82f6;
             --accent-color: #06b6d4;
             
             /* Tons de Background */
@@ -290,7 +38,7 @@
             --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            --shadow-blue: 0 10px 30px -5px rgba(59, 130, 246, 0.3);
+            --shadow-blue: 0 10px 30px -5px rgba(37, 99, 235, 0.3);
             
             /* Espaçamentos */
             --space-xs: 0.5rem;
@@ -341,8 +89,8 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
-                        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            background: radial-gradient(circle at 15% 50%, rgba(37, 99, 235, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.05) 0%, transparent 50%);
             pointer-events: none;
             z-index: -1;
         }
@@ -628,7 +376,7 @@
         .btn-secondary:hover {
             border-color: var(--primary-color);
             transform: translateY(-3px);
-            background-color: rgba(59, 130, 246, 0.05);
+            background-color: rgba(37, 99, 235, 0.05);
         }
 
         .hero-visual {
@@ -638,7 +386,7 @@
             transform: translateY(-50%);
             width: 45%;
             height: 80%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
             border-radius: var(--radius-xl);
             overflow: hidden;
             display: flex;
@@ -748,7 +496,7 @@
         .service-icon {
             width: 70px;
             height: 70px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
             border-radius: var(--radius-lg);
             display: flex;
             align-items: center;
@@ -850,7 +598,7 @@
 
         .portfolio-image {
             height: 220px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.2), rgba(59, 130, 246, 0.2));
             display: flex;
             align-items: center;
             justify-content: center;
@@ -870,7 +618,7 @@
         }
 
         .tag {
-            background-color: rgba(59, 130, 246, 0.1);
+            background-color: rgba(37, 99, 235, 0.1);
             color: var(--primary-light);
             padding: 0.25rem 0.75rem;
             border-radius: var(--radius-full);
@@ -901,7 +649,7 @@
         .contact-icon {
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(59, 130, 246, 0.1));
             border-radius: var(--radius-md);
             display: flex;
             align-items: center;
@@ -944,7 +692,7 @@
         .form-control:focus {
             outline: none;
             border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
         }
 
         textarea.form-control {
@@ -1448,7 +1196,7 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>contato@enzzogomes.com</p>
+                            <p>enzzogomes40@gmail.com</p>
                         </div>
                     </div>
                     
@@ -1458,7 +1206,7 @@
                         </div>
                         <div>
                             <h4>Telefone</h4>
-                            <p>(11) 99999-9999</p>
+                            <p>(11) 99594-4881</p>
                         </div>
                     </div>
                     
@@ -1519,8 +1267,7 @@
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-link"><i class="fab fa-github"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://wa.link/9lby32" target="_blank" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
                 </div>
                 
