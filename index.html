@@ -1,1087 +1,335 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Enzzo Gomes | Criação de Sites de Alto Desempenho e Soluções com IA">
-    <title>Enzzo Gomes | Sites Profissionais & IA</title>
-    
-    <!-- Preload critical resources -->
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" as="style">
+    <title>Enzzo Gomes | Desenvolvimento de Sites Profissionais</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
     
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
-    
+    <!-- EmailJS para envio de formulário -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'neon-primary': '#D4FF00', // Seu neon amarelo do portfólio
-                        'neon-secondary': '#D4FF00', // Mantendo o mesmo para consistência
-                        'dark-bg': '#0B0B0B', // Preto do seu portfólio
-                        'card-bg': '#1A1A1A', // Cinza escuro do seu portfólio
-                        'accent-red': '#D4FF00', // Usando o neon para destaque
-                        'accent-blue': '#D4FF00',
-                    },
-                    fontFamily: {
-                        sans: ['Barlow', 'sans-serif'],
-                        mono: ['Courier New', 'monospace'],
-                    },
-                    animation: {
-                        'float': 'float 6s ease-in-out infinite',
-                        'pulse-neon': 'pulse-neon 2s ease-in-out infinite',
-                        'glow': 'glow 3s ease-in-out infinite',
-                        'scan': 'scan 4s linear infinite',
-                        'typing': 'typing 3.5s steps(40, end)',
-                        'blink-caret': 'blink-caret .75s step-end infinite',
-                    },
-                    keyframes: {
-                        float: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
-                        },
-                        'pulse-neon': {
-                            '0%, 100%': { 
-                                boxShadow: '0 0 5px #D4FF00, 0 0 10px #D4FF00, 0 0 15px #D4FF00' 
-                            },
-                            '50%': { 
-                                boxShadow: '0 0 10px #D4FF00, 0 0 20px #D4FF00, 0 0 30px #D4FF00' 
-                            },
-                        },
-                        glow: {
-                            '0%, 100%': { opacity: '0.5' },
-                            '50%': { opacity: '1' },
-                        },
-                        scan: {
-                            '0%': { transform: 'translateY(-100%)' },
-                            '100%': { transform: 'translateY(100vh)' },
-                        },
-                        typing: {
-                            'from': { width: '0' },
-                            'to': { width: '100%' },
-                        },
-                        'blink-caret': {
-                            'from, to': { 'border-color': 'transparent' },
-                            '50%': { 'border-color': '#D4FF00' },
-                        },
-                    }
-                }
-            }
-        }
+        (function() {
+            emailjs.init("YOUR_PUBLIC_KEY"); // Você precisa criar conta no EmailJS
+        })();
     </script>
     
     <style>
-        /* Base styles - Mantendo seu estilo do portfólio */
-        * {
-            -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
+        :root {
+            --neon: #D4FF00;
+            --dark: #0B0B0B;
+            --gray: #1A1A1A;
         }
-        
         body {
-            background-color: #050505; /* Preto do seu portfólio */
-            color: #FFFFFF;
-            overflow-x: hidden;
+            background: var(--dark);
+            color: white;
             font-family: 'Barlow', sans-serif;
-            cursor: default;
         }
-        
-        /* Estilo do cursor igual seu portfólio */
-        .cursor-outline {
-            position: fixed;
-            top: 0;
-            left: 0;
-            transform: translate(-50%, -50%);
-            border-radius: 50%;
-            z-index: 9999;
-            pointer-events: none;
-            width: 40px;
-            height: 40px;
-            border: 2px solid rgba(212, 255, 0, 0.5);
-            transition: width 0.2s, height 0.2s, background-color 0.2s;
-            mix-blend-mode: difference;
-        }
-        
-        /* Neon text effects - Seu estilo */
-        .neon-text {
-            text-shadow: 
-                0 0 5px #D4FF00,
-                0 0 10px #D4FF00,
-                0 0 20px #D4FF00;
-        }
-        
-        .neon-primary {
-            color: #D4FF00;
-        }
-        
-        /* Gradient text igual seu portfólio */
-        .gradient-text {
-            background: linear-gradient(135deg, #D4FF00 0%, #FFFFFF 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        
-        /* Card styles - Mantendo skew do seu portfólio */
-        .service-card {
-            background: #1A1A1A;
-            border: 1px solid rgba(212, 255, 0, 0.1);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            transform: skewX(-12deg);
-        }
-        
-        .service-card .unskew-content {
-            transform: skewX(12deg);
-        }
-        
-        .service-card:hover {
-            transform: skewX(-12deg) translateY(-10px);
-            border-color: #D4FF00;
-            box-shadow: 
-                0 10px 30px rgba(212, 255, 0, 0.1),
-                0 0 50px rgba(212, 255, 0, 0.05);
-        }
-        
-        /* Scan line effect do seu portfólio */
-        .scan-line {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                rgba(212, 255, 0, 0.8) 50%, 
-                transparent 100%);
-            box-shadow: 0 0 15px rgba(212, 255, 0, 0.5);
-            animation: scan 4s linear infinite;
-            pointer-events: none;
-            z-index: 2;
-            opacity: 0.5;
-        }
-        
-        /* Speed lines background do seu portfólio */
-        .speed-lines {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, 
-                transparent 0%, 
-                transparent 45%, 
-                rgba(212, 255, 0, 0.05) 50%, 
-                transparent 55%, 
-                transparent 100%);
-            background-size: 200px 100%;
-            animation: speedLines 20s linear infinite;
-            pointer-events: none;
-            z-index: 1;
-            opacity: 0.3;
-        }
-        
-        @keyframes speedLines {
-            0% { transform: translateX(-200px); }
-            100% { transform: translateX(200px); }
-        }
-        
-        /* CTA button - Seu estilo */
-        .cta-button {
-            background: #D4FF00;
-            color: #000000;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
+        .neon { color: var(--neon); }
+        .neon-bg { background: var(--neon); color: black; }
+        .border-neon { border-color: var(--neon); }
+        .card {
+            background: var(--gray);
+            border: 1px solid #333;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            transform: skewX(-12deg);
         }
-        
-        .cta-button .unskew-content {
-            transform: skewX(12deg);
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--neon);
         }
-        
-        .cta-button:hover {
-            transform: skewX(-12deg) translateY(-3px);
-            box-shadow: 
-                0 10px 30px rgba(212, 255, 0, 0.3),
-                0 0 50px rgba(212, 255, 0, 0.2);
-        }
-        
-        /* Custom scrollbar igual seu portfólio */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: #0B0B0B;
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border: 1px solid #0B0B0B;
-        }
-        
-        ::-webkit-scrollbar-thumb:hover {
-            background: #D4FF00;
-        }
-        
-        /* Selection color igual seu portfólio */
-        ::selection {
-            background-color: #D4FF00;
-            color: #000000;
-        }
-        
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .animate-float,
-            .animate-pulse-neon,
-            .animate-glow,
-            .animate-scan,
-            .animate-typing {
-                animation: none !important;
-            }
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .service-card,
-            .cta-button {
-                transform: skewX(-8deg);
-            }
-            
-            .service-card .unskew-content,
-            .cta-button .unskew-content {
-                transform: skewX(8deg);
-            }
-            
-            .service-card:hover {
-                transform: skewX(-8deg) translateY(-10px);
-            }
-            
-            .cta-button:hover {
-                transform: skewX(-8deg) translateY(-3px);
-            }
-            
-            .cursor-outline {
-                display: none;
-            }
+        .price-tag {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--neon);
         }
     </style>
 </head>
-
-<body class="relative overflow-x-hidden">
-    <!-- Efeitos visuais do seu portfólio -->
-    <div class="speed-lines"></div>
-    <div class="scan-line"></div>
-    <div class="cursor-outline md:block hidden"></div>
-    
-    <!-- Gradient overlay -->
-    <div class="fixed inset-0 pointer-events-none z-0 opacity-10"
-        style="background-image: linear-gradient(45deg, #1a1a1a 25%, transparent 25%, transparent 50%, #1a1a1a 50%, #1a1a1a 75%, transparent 75%, transparent); background-size: 40px 40px;">
-    </div>
+<body>
 
     <!-- Header -->
-    <header class="relative z-50 py-6 px-4 md:px-8">
+    <header class="py-6 px-6 border-b border-gray-800">
         <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <!-- Logo igual seu portfólio -->
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-[#D4FF00] animate-pulse-neon"></div>
-                <span class="text-2xl font-black italic tracking-tighter">
-                    <span class="text-white">ENZZO</span>
-                    <span class="text-[#D4FF00]">DEV</span>
-                </span>
+            <div class="text-2xl font-black">
+                <span class="text-white">ENZZO</span>
+                <span class="neon">DEV</span>
             </div>
-            
-            <!-- Navigation -->
-            <nav class="hidden md:flex items-center gap-8">
-                <a href="#services" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest">Serviços</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest">Portfólio</a>
-                <a href="#traffic" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest">Tráfego</a>
-                <a href="#contact" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest">Contato</a>
-                <a href="https://enzzogomes.github.io" target="_blank" 
-                   class="px-6 py-2 border-2 border-[#D4FF00] text-[#D4FF00] font-bold uppercase tracking-wider hover:bg-[#D4FF00] hover:text-black transition-all transform skew-x-[-12deg]">
-                    <span class="block transform skew-x-[12deg]">Meu Portfólio</span>
-                </a>
+            <nav class="hidden md:flex gap-8">
+                <a href="#servicos" class="text-gray-300 hover:text-white">Serviços</a>
+                <a href="#precos" class="text-gray-300 hover:text-white">Preços</a>
+                <a href="#portfolio" class="text-gray-300 hover:text-white">Portfólio</a>
+                <a href="#contato" class="px-4 py-2 neon-bg font-bold">Contato</a>
             </nav>
-            
-            <!-- Mobile Menu Button -->
-            <button id="mobileMenuButton" class="md:hidden text-[#D4FF00]">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-        </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden hidden absolute top-full left-0 right-0 bg-[#0B0B0B] border-t border-gray-900 p-6">
-            <div class="flex flex-col gap-4">
-                <a href="#services" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest py-2">Serviços</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest py-2">Portfólio</a>
-                <a href="#traffic" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest py-2">Tráfego</a>
-                <a href="#contact" class="text-gray-300 hover:text-[#D4FF00] transition-colors font-bold uppercase text-sm tracking-widest py-2">Contato</a>
-                <a href="https://enzzogomes.github.io" target="_blank" 
-                   class="px-6 py-3 border-2 border-[#D4FF00] text-[#D4FF00] font-bold uppercase tracking-wider hover:bg-[#D4FF00] hover:text-black transition-all text-center mt-4">
-                    Meu Portfólio
-                </a>
-            </div>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center py-20 px-4 md:px-8 z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <!-- Left Column -->
-                <div class="relative">
-                    <div class="mb-6">
-                        <span class="inline-block px-4 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-4">
-                            ⚡ DESENVOLVIMENTO DE ALTA PERFORMANCE
-                        </span>
-                    </div>
-                    
-                    <h1 class="text-5xl md:text-7xl font-black italic leading-tight mb-6 tracking-tighter">
-                        <span class="gradient-text">Sites Que</span><br>
-                        <span class="text-white">Convertem Visitantes</span>
-                    </h1>
-                    
-                    <p class="text-xl text-gray-300 mb-8 leading-relaxed font-light">
-                        Não é apenas código. É <span class="text-[#D4FF00] font-bold">performance</span>, 
-                        <span class="text-[#D4FF00] font-bold">conversão</span> e 
-                        <span class="text-[#D4FF00] font-bold">resultados</span>.
-                        Desenvolvo sites rápidos, seguros e otimizados que geram valor real.
-                    </p>
-                    
-                    <!-- Terminal Style CTA -->
-                    <div class="p-6 mb-8 bg-[#1A1A1A] border-l-4 border-[#D4FF00] transform skew-x-[-12deg]">
-                        <div class="transform skew-x-[12deg] pl-4">
-                            <div class="text-[#D4FF00] font-mono text-sm mb-2">
-                                <span class="text-gray-400">$</span> enzzo dev --services
-                            </div>
-                            <div class="text-white font-mono animate-typing overflow-hidden whitespace-nowrap">
-                                Sites Profissionais | E-commerce | Aplicações Web | IA Integration
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="flex flex-wrap gap-4">
-                        <a href="#contact" class="cta-button px-8 py-4 rounded-none">
-                            <span class="unskew-content">QUERO MEU SITE AGORA</span>
-                        </a>
-                        <a href="#portfolio" class="px-8 py-4 border-2 border-[#D4FF00] text-[#D4FF00] font-bold uppercase tracking-wider hover:bg-[#D4FF00]/10 transition-all transform skew-x-[-12deg]">
-                            <span class="block transform skew-x-[12deg]">Ver Trabalhos</span>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Right Column - Stats -->
-                <div class="grid grid-cols-2 gap-6">
-                    <div class="service-card p-6 rounded-none">
-                        <div class="unskew-content">
-                            <div class="text-4xl font-black text-[#D4FF00] mb-2">+99</div>
-                            <div class="text-gray-300 font-medium">Performance Score</div>
-                            <div class="text-xs text-gray-500 mt-2">Google Lighthouse</div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card p-6 rounded-none">
-                        <div class="unskew-content">
-                            <div class="text-4xl font-black text-[#D4FF00] mb-2">0.8s</div>
-                            <div class="text-gray-300 font-medium">Carregamento</div>
-                            <div class="text-xs text-gray-500 mt-2">Média de Load Time</div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card p-6 rounded-none">
-                        <div class="unskew-content">
-                            <div class="text-4xl font-black text-[#D4FF00] mb-2">100%</div>
-                            <div class="text-gray-300 font-medium">Mobile First</div>
-                            <div class="text-xs text-gray-500 mt-2">Design Responsivo</div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card p-6 rounded-none">
-                        <div class="unskew-content">
-                            <div class="text-4xl font-black text-[#D4FF00] mb-2">24/7</div>
-                            <div class="text-gray-300 font-medium">Suporte</div>
-                            <div class="text-xs text-gray-500 mt-2">Monitoramento Ativo</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    <!-- Hero -->
+    <section class="py-20 px-6 text-center">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-5xl md:text-6xl font-black mb-6">
+                <span class="text-white">Sites Profissionais</span><br>
+                <span class="neon">Que Convertem</span>
+            </h1>
+            <p class="text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
+                Desenvolvimento de sites rápidos, seguros e otimizados para gerar resultados reais para seu negócio.
+            </p>
+            <a href="#contato" class="inline-block px-8 py-4 neon-bg text-black font-bold text-lg">
+                Solicitar Orçamento
+            </a>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 px-4 md:px-8 relative">
+    <!-- Serviços -->
+    <section id="servicos" class="py-20 px-6 bg-gray">
         <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-4">
-                    🚀 MEUS SERVIÇOS
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black italic mb-6 tracking-tighter">
-                    <span class="gradient-text">Soluções Completas</span><br>
-                    <span class="text-white">Para Seu Negócio</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light">
-                    Do conceito à implementação, ofereço soluções web completas com foco em resultados
-                </p>
-            </div>
+            <h2 class="text-4xl font-black text-center mb-16">
+                <span class="neon">Serviços</span>
+            </h2>
             
             <div class="grid md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00]/20 flex items-center justify-center mb-6">
-                            <span class="text-2xl">🚀</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Site Institucional</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Landing pages e sites corporativos com design moderno, alta performance e otimizados para conversão.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Design responsivo
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Otimização SEO
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Performance 90+
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Integração Analytics
-                            </li>
-                        </ul>
-                        <div class="flex items-baseline">
-                            <div class="text-[#D4FF00] text-3xl font-black">R$ 1.200</div>
-                            <div class="text-gray-500 text-sm ml-2">à vista</div>
-                        </div>
-                        <div class="text-gray-400 text-sm mt-1">ou 3x R$ 450</div>
-                    </div>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-card p-8 rounded-none relative border-2 border-[#D4FF00] animate-pulse-neon">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <span class="px-4 py-1 bg-[#D4FF00] text-black text-sm font-bold rounded-none transform skew-x-[-12deg]">
-                            <span class="block transform skew-x-[12deg]">MAIS PEDIDO</span>
-                        </span>
-                    </div>
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00] flex items-center justify-center mb-6">
-                            <span class="text-2xl">🛒</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">E-commerce Básico</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Loja online com até 50 produtos, carrinho, pagamentos e dashboard administrativo.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Até 50 produtos
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Pagamentos (Pix, Cartão)
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Painel administrativo
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Integração com correios
-                            </li>
-                        </ul>
-                        <div class="flex items-baseline">
-                            <div class="text-[#D4FF00] text-3xl font-black">R$ 2.400</div>
-                            <div class="text-gray-500 text-sm ml-2">à vista</div>
-                        </div>
-                        <div class="text-gray-400 text-sm mt-1">ou 6x R$ 450</div>
-                    </div>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00]/20 flex items-center justify-center mb-6">
-                            <span class="text-2xl">🤖</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Site + Chatbot IA</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Site institucional com chatbot inteligente para atendimento automático 24/7.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Site institucional
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Chatbot com IA
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Treinamento personalizado
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Integração WhatsApp
-                            </li>
-                        </ul>
-                        <div class="flex items-baseline">
-                            <div class="text-[#D4FF00] text-3xl font-black">R$ 1.800</div>
-                            <div class="text-gray-500 text-sm ml-2">à vista</div>
-                        </div>
-                        <div class="text-gray-400 text-sm mt-1">ou 4x R$ 500</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Additional Services -->
-            <div class="mt-16 grid md:grid-cols-2 gap-8">
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#D4FF00]/10 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl">⚡</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-white mb-2">Otimização de Site Existente</h4>
-                                <p class="text-gray-300 font-light">
-                                    Seu site lento? Otimizo performance, velocidade e SEO para melhorar conversões.
-                                </p>
-                                <div class="mt-4 text-[#D4FF00] text-2xl font-black">R$ 600</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="flex items-start gap-4">
-                            <div class="w-12 h-12 rounded-lg bg-[#D4FF00]/10 flex items-center justify-center flex-shrink-0">
-                                <span class="text-xl">🛠️</span>
-                            </div>
-                            <div>
-                                <h4 class="text-xl font-black text-white mb-2">Manutenção Mensal</h4>
-                                <p class="text-gray-300 font-light">
-                                    Pacote mensal com atualizações, backups, segurança e suporte técnico.
-                                </p>
-                                <div class="mt-4 text-[#D4FF00] text-2xl font-black">R$ 150/mês</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Traffic Plans Section -->
-    <section id="traffic" class="py-20 px-4 md:px-8 relative bg-[#0B0B0B]">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-4">
-                    📈 PLANOS DE TRÁFEGO
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black italic mb-6 tracking-tighter">
-                    <span class="gradient-text">Tráfego Pago</span><br>
-                    <span class="text-white">Para Seu Site</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light">
-                    Crio e gerencio campanhas de tráfego pago para trazer clientes qualificados para seu negócio
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Traffic Plan 1 -->
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00]/20 flex items-center justify-center mb-6">
-                            <span class="text-2xl">🚀</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Plano Iniciante</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Ideal para quem está começando com tráfego pago e quer testar o mercado.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                1 campanha Google Ads
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Investimento mínimo: R$ 500/mês
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Relatórios semanais
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Otimização básica
-                            </li>
-                        </ul>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="text-[#D4FF00] text-3xl font-black">R$ 300</div>
-                                <div class="text-gray-400 text-sm">gestão mensal</div>
-                            </div>
-                            <div class="text-gray-500 text-sm">
-                                + 15% do investimento em ads
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Traffic Plan 2 -->
-                <div class="service-card p-8 rounded-none relative border-2 border-[#D4FF00] animate-pulse-neon">
-                    <div class="absolute -top-3 left-1/2 transform -translate-x-1/2">
-                        <span class="px-4 py-1 bg-[#D4FF00] text-black text-sm font-bold rounded-none transform skew-x-[-12deg]">
-                            <span class="block transform skew-x-[12deg]">RECOMENDADO</span>
-                        </span>
-                    </div>
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00] flex items-center justify-center mb-6">
-                            <span class="text-2xl">🎯</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Plano Growth</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Para negócios que querem escalar com campanhas multi-plataforma.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                3 campanhas (Google + Meta)
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Investimento: R$ 1.500+/mês
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Relatórios diários
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                A/B testing
-                            </li>
-                        </ul>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="text-[#D4FF00] text-3xl font-black">R$ 600</div>
-                                <div class="text-gray-400 text-sm">gestão mensal</div>
-                            </div>
-                            <div class="text-gray-500 text-sm">
-                                + 12% do investimento em ads
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Traffic Plan 3 -->
-                <div class="service-card p-8 rounded-none">
-                    <div class="unskew-content">
-                        <div class="w-16 h-16 rounded-full bg-[#D4FF00]/20 flex items-center justify-center mb-6">
-                            <span class="text-2xl">🏆</span>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Plano Enterprise</h3>
-                        <p class="text-gray-300 mb-6 font-light">
-                            Gestão completa de tráfego com estratégia personalizada e resultados garantidos.
-                        </p>
-                        <ul class="space-y-2 mb-8">
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Campanhas ilimitadas
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Investimento: R$ 3.000+/mês
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Relatórios em tempo real
-                            </li>
-                            <li class="flex items-center text-gray-300">
-                                <span class="w-2 h-2 bg-[#D4FF00] rounded-full mr-3"></span>
-                                Consultoria estratégica
-                            </li>
-                        </ul>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="text-[#D4FF00] text-3xl font-black">R$ 1.200</div>
-                                <div class="text-gray-400 text-sm">gestão mensal</div>
-                            </div>
-                            <div class="text-gray-500 text-sm">
-                                + 10% do investimento em ads
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Showcase -->
-    <section id="portfolio" class="py-20 px-4 md:px-8 relative">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16">
-                <span class="inline-block px-4 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-4">
-                    🎯 PORTFÓLIO
-                </span>
-                <h2 class="text-4xl md:text-6xl font-black italic mb-6 tracking-tighter">
-                    <span class="gradient-text">Trabalhos Recentes</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto font-light">
-                    Projetos desenvolvidos com foco em performance, design e resultados
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Project 1 - Link CORRIGIDO -->
-                <a href="https://huggingface.co/spaces/Enzzozink/tutor-ingles-ia" target="_blank" 
-                   class="service-card group p-6 rounded-none block">
-                    <div class="unskew-content">
-                        <div class="aspect-video bg-gradient-to-br from-[#D4FF00]/20 to-black/50 rounded-lg mb-6 flex items-center justify-center">
-                            <div class="text-4xl">🤖</div>
-                        </div>
-                        <h3 class="text-xl font-black text-white mb-2 group-hover:text-[#D4FF00] transition-colors">
-                            AI English Tutor
-                        </h3>
-                        <p class="text-gray-300 mb-4 font-light">
-                            Tutor de inglês com IA para aprendizado personalizado e feedback em tempo real.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                React
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                OpenAI
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                Node.js
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Project 2 - Link CORRIGIDO para SEU portfólio -->
-                <a href="https://enzzogomes.github.io" target="_blank" 
-                   class="service-card group p-6 rounded-none block">
-                    <div class="unskew-content">
-                        <div class="aspect-video bg-gradient-to-br from-[#D4FF00]/20 to-black/50 rounded-lg mb-6 flex items-center justify-center">
-                            <div class="text-4xl">🚀</div>
-                        </div>
-                        <h3 class="text-xl font-black text-white mb-2 group-hover:text-[#D4FF00] transition-colors">
-                            Meu Portfólio
-                        </h3>
-                        <p class="text-gray-300 mb-4 font-light">
-                            Portfólio pessoal com scroll horizontal e efeitos visuais imersivos.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                GSAP
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                Tailwind
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                Lenis
-                            </span>
-                        </div>
-                    </div>
-                </a>
-                
-                <!-- Project 3 - Link CORRIGIDO -->
-                <a href="https://projeto-app-iota.vercel.app/" target="_blank" 
-                   class="service-card group p-6 rounded-none block">
-                    <div class="unskew-content">
-                        <div class="aspect-video bg-gradient-to-br from-[#D4FF00]/20 to-black/50 rounded-lg mb-6 flex items-center justify-center">
-                            <div class="text-4xl">💼</div>
-                        </div>
-                        <h3 class="text-xl font-black text-white mb-2 group-hover:text-[#D4FF00] transition-colors">
-                            Projeto App
-                        </h3>
-                        <p class="text-gray-300 mb-4 font-light">
-                            Aplicação web moderna com foco em UX e organização de dados complexos.
-                        </p>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                Next.js
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                TypeScript
-                            </span>
-                            <span class="px-3 py-1 bg-[#D4FF00]/10 text-[#D4FF00] text-xs rounded-none">
-                                Prisma
-                            </span>
-                        </div>
-                    </div>
-                </a>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="https://github.com/EnzzoGomes" target="_blank" 
-                   class="inline-flex items-center gap-3 px-8 py-4 border-2 border-[#D4FF00] text-[#D4FF00] font-bold uppercase tracking-wider hover:bg-[#D4FF00] hover:text-black transition-all transform skew-x-[-12deg] group">
-                    <span class="flex items-center gap-3 transform skew-x-[12deg]">
-                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                        </svg>
-                        Ver mais projetos no GitHub
-                        <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
-                    </span>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="contact" class="py-20 px-4 md:px-8 relative overflow-hidden">
-        <!-- Background effects -->
-        <div class="absolute inset-0 bg-gradient-to-br from-[#D4FF00]/5 via-transparent to-[#D4FF00]/5"></div>
-        
-        <div class="max-w-4xl mx-auto relative z-10">
-            <div class="service-card p-8 md:p-12 rounded-none text-center">
-                <div class="unskew-content">
-                    <span class="inline-block px-4 py-2 bg-[#D4FF00]/10 border border-[#D4FF00]/30 rounded-full text-[#D4FF00] text-sm font-bold uppercase tracking-widest mb-6">
-                        🚀 VAMOS CONVERSAR
-                    </span>
-                    
-                    <h2 class="text-4xl md:text-5xl font-black italic mb-6 tracking-tighter">
-                        <span class="gradient-text">Pronto Para</span><br>
-                        <span class="text-white">Transformar Sua Ideia?</span>
-                    </h2>
-                    
-                    <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto font-light">
-                        Vou criar um site que não apenas impressiona visualmente, mas também gera resultados reais para seu negócio.
+                <!-- Site Institucional -->
+                <div class="card p-8 rounded-lg">
+                    <div class="text-3xl mb-6">●</div>
+                    <h3 class="text-2xl font-black text-white mb-4">Site Institucional</h3>
+                    <p class="text-gray-300 mb-6">
+                        Landing page ou site corporativo com design moderno e otimizado para conversões.
                     </p>
-                    
-                    <!-- Contact Info -->
-                    <div class="grid md:grid-cols-3 gap-6 mb-8">
-                        <div class="p-6 bg-[#1A1A1A] transform skew-x-[-12deg] rounded-none">
-                            <div class="transform skew-x-[12deg]">
-                                <div class="text-3xl mb-3">⚡</div>
-                                <div class="text-lg font-bold text-white mb-1">Rápido</div>
-                                <div class="text-gray-300">Entrega em 7-14 dias</div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-6 bg-[#1A1A1A] transform skew-x-[-12deg] rounded-none">
-                            <div class="transform skew-x-[12deg]">
-                                <div class="text-3xl mb-3">🎯</div>
-                                <div class="text-lg font-bold text-white mb-1">Focado</div>
-                                <div class="text-gray-300">1 projeto por vez</div>
-                            </div>
-                        </div>
-                        
-                        <div class="p-6 bg-[#1A1A1A] transform skew-x-[-12deg] rounded-none">
-                            <div class="transform skew-x-[12deg]">
-                                <div class="text-3xl mb-3">🤝</div>
-                                <div class="text-lg font-bold text-white mb-1">Suporte</div>
-                                <div class="text-gray-300">30 dias grátis</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Contact Form -->
-                    <form id="contactForm" class="space-y-6 max-w-lg mx-auto">
-                        <div class="grid md:grid-cols-2 gap-6">
-                            <input type="text" 
-                                   placeholder="Seu nome" 
-                                   required
-                                   class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-800 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00] transition-colors transform skew-x-[-12deg]">
-                            
-                            <input type="email" 
-                                   placeholder="Seu melhor e-mail" 
-                                   required
-                                   class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-800 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00] transition-colors transform skew-x-[-12deg]">
-                        </div>
-                        
-                        <textarea 
-                            placeholder="Conte-me sobre seu projeto..." 
-                            rows="4"
-                            required
-                            class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-800 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00] transition-colors resize-none transform skew-x-[-12deg]"></textarea>
-                        
-                        <select class="w-full px-6 py-4 bg-[#1A1A1A] border border-gray-800 rounded-none text-white placeholder-gray-500 focus:outline-none focus:border-[#D4FF00] transition-colors transform skew-x-[-12deg]">
-                            <option value="">Selecione o serviço de interesse</option>
-                            <option value="site">Site Institucional - R$ 1.200</option>
-                            <option value="ecommerce">E-commerce Básico - R$ 2.400</option>
-                            <option value="ia">Site + Chatbot IA - R$ 1.800</option>
-                            <option value="otimizacao">Otimização de Site - R$ 600</option>
-                            <option value="traffic">Plano de Tráfego</option>
-                        </select>
-                        
-                        <button type="submit" 
-                                class="cta-button w-full px-8 py-4 rounded-none">
-                            <span class="unskew-content text-lg">SOLICITAR ORÇAMENTO AGORA</span>
-                        </button>
-                    </form>
-                    
-                    <p class="text-gray-400 text-sm mt-6 font-light">
-                        Respondo em até 24h durante dias úteis. Vamos construir algo incrível juntos!
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Design responsivo
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Otimização SEO
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Performance 90+ Google
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Integração Analytics
+                        </li>
+                    </ul>
+                    <div class="price-tag">R$ 800</div>
+                    <div class="text-gray-400 text-sm">à vista ou 2x R$ 450</div>
+                </div>
+                
+                <!-- E-commerce Básico -->
+                <div class="card p-8 rounded-lg border-2 border-neon">
+                    <div class="text-3xl mb-6">●</div>
+                    <h3 class="text-2xl font-black text-white mb-4">E-commerce Básico</h3>
+                    <p class="text-gray-300 mb-6">
+                        Loja online com até 30 produtos, carrinho de compras e pagamentos integrados.
                     </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Até 30 produtos
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Pagamentos (Pix, Cartão)
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Painel administrativo
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Dashboard de vendas
+                        </li>
+                    </ul>
+                    <div class="price-tag">R$ 1.500</div>
+                    <div class="text-gray-400 text-sm">à vista ou 3x R$ 550</div>
+                </div>
+                
+                <!-- Site + IA -->
+                <div class="card p-8 rounded-lg">
+                    <div class="text-3xl mb-6">●</div>
+                    <h3 class="text-2xl font-black text-white mb-4">Site com Chatbot IA</h3>
+                    <p class="text-gray-300 mb-6">
+                        Site institucional com chatbot inteligente para atendimento automático 24/7.
+                    </p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Site institucional completo
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Chatbot com inteligência artificial
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Treinamento personalizado
+                        </li>
+                        <li class="flex items-center text-gray-300">
+                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
+                            Integração WhatsApp
+                        </li>
+                    </ul>
+                    <div class="price-tag">R$ 1.200</div>
+                    <div class="text-gray-400 text-sm">à vista ou 3x R$ 450</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="py-12 px-4 md:px-8 border-t border-gray-900">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+    <!-- Processo -->
+    <section class="py-20 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl font-black mb-16">
+                <span class="neon">Como Funciona</span>
+            </h2>
+            
+            <div class="grid md:grid-cols-4 gap-8">
                 <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 rounded-full bg-[#D4FF00]"></div>
-                        <span class="text-2xl font-black italic tracking-tighter">
-                            <span class="text-white">ENZZO</span>
-                            <span class="text-[#D4FF00]">DEV</span>
-                        </span>
-                    </div>
-                    <p class="text-gray-400 font-light">
-                        Desenvolvimento web de alta performance & soluções com IA
-                    </p>
+                    <div class="text-2xl font-black neon mb-4">1</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Briefing</h3>
+                    <p class="text-gray-300">Entendimento do projeto e objetivos</p>
                 </div>
-                
-                <div class="flex gap-6">
-                    <a href="https://github.com/EnzzoGomes" 
-                       target="_blank"
-                       class="p-3 border border-gray-800 hover:border-[#D4FF00] hover:text-[#D4FF00] rounded-none transition-all duration-300 transform hover:scale-110"
-                       aria-label="GitHub">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    
-                    <a href="https://www.linkedin.com/in/enzzo-gomes-42b531396/" 
-                       target="_blank"
-                       class="p-3 border border-gray-800 hover:border-[#D4FF00] hover:text-[#D4FF00] rounded-none transition-all duration-300 transform hover:scale-110"
-                       aria-label="LinkedIn">
-                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                            <path fill-rule="evenodd" d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" clip-rule="evenodd"></path>
-                        </svg>
-                    </a>
-                    
-                    <a href="https://enzzogomes.github.io" 
-                       target="_blank"
-                       class="p-3 border border-gray-800 hover:border-[#D4FF00] hover:text-[#D4FF00] rounded-none transition-all duration-300 transform hover:scale-110"
-                       aria-label="Portfólio Pessoal">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
-                        </svg>
-                    </a>
+                <div>
+                    <div class="text-2xl font-black neon mb-4">2</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Design</h3>
+                    <p class="text-gray-300">Prototipagem e aprovação do layout</p>
                 </div>
-            </div>
-            
-            <div class="mt-8 pt-8 border-t border-gray-900 text-center">
-                <p class="text-gray-500 text-sm font-light">
-                    © 2024 Enzzo Gomes. Todos os direitos reservados.
-                    <span class="block mt-2 text-xs">
-                        Desenvolvido com ⚡ e muito código de alta performance
-                    </span>
-                </p>
+                <div>
+                    <div class="text-2xl font-black neon mb-4">3</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Desenvolvimento</h3>
+                    <p class="text-gray-300">Codificação e implementação</p>
+                </div>
+                <div>
+                    <div class="text-2xl font-black neon mb-4">4</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Entrega</h3>
+                    <p class="text-gray-300">Testes, ajustes e treinamento</p>
+                </div>
             </div>
         </div>
-    </footer>
+    </section>
+
+    <!-- Formulário de Contato COM SISTEMA DE EMAIL -->
+    <section id="contato" class="py-20 px-6 bg-gray">
+        <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-black mb-6">
+                    <span class="neon">Solicite Seu Orçamento</span>
+                </h2>
+                <p class="text-gray-300">
+                    Preencha o formulário abaixo. O orçamento será enviado para seu email 
+                    e uma cópia chegará na minha caixa de entrada.
+                </p>
+            </div>
+            
+            <form id="orcamentoForm" class="max-w-2xl mx-auto space-y-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <input type="text" 
+                               id="nome" 
+                               placeholder="Seu nome" 
+                               required
+                               class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                    </div>
+                    <div>
+                        <input type="email" 
+                               id="email" 
+                               placeholder="Seu melhor email" 
+                               required
+                               class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                    </div>
+                </div>
+                
+                <div>
+                    <input type="text" 
+                           id="telefone" 
+                           placeholder="Telefone (opcional)" 
+                           class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                </div>
+                
+                <div>
+                    <select id="servico" class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white">
+                        <option value="">Selecione o serviço de interesse</option>
+                        <option value="site">Site Institucional - R$ 800</option>
+                        <option value="ecommerce">E-commerce Básico - R$ 1.500</option>
+                        <option value="site-ia">Site + Chatbot IA - R$ 1.200</option>
+                        <option value="outro">Outro (descreva abaixo)</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <textarea 
+                        id="mensagem" 
+                        placeholder="Descreva seu projeto ou necessidade..." 
+                        rows="4"
+                        class="w-full px-4 py-3 bg-dark border border-gray-700 rounded-lg text-white resize-none"></textarea>
+                </div>
+                
+                <div>
+                    <label class="flex items-start">
+                        <input type="checkbox" required class="mt-1 mr-3">
+                        <span class="text-gray-300 text-sm">
+                            Concordo em receber o orçamento por email e que meus dados sejam processados 
+                            conforme a política de privacidade.
+                        </span>
+                    </label>
+                </div>
+                
+                <button type="submit" 
+                        class="w-full px-8 py-4 neon-bg text-black font-bold text-lg rounded-lg hover:opacity-90">
+                    Enviar Solicitação de Orçamento
+                </button>
+                
+                <p class="text-gray-400 text-sm text-center">
+                    Você receberá uma cópia do orçamento no seu email em até 24h.
+                </p>
+            </form>
+        </div>
+    </section>
 
     <script>
-        // Mobile menu toggle
-        document.getElementById('mobileMenuButton').addEventListener('click', function() {
-            const mobileMenu = document.getElementById('mobileMenu');
-            mobileMenu.classList.toggle('hidden');
-        });
+        // Configuração do EmailJS (você precisa criar conta gratuita)
+        // 1. Vá em https://www.emailjs.com/
+        // 2. Crie conta gratuita
+        // 3. Crie um template de email
+        // 4. Substitua YOUR_PUBLIC_KEY pela sua chave pública
+        // 5. O email será enviado para VOCÊ e para o cliente
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const mobileMenu = document.getElementById('mobileMenu');
-            const menuButton = document.getElementById('mobileMenuButton');
-            
-            if (!mobileMenu.classList.contains('hidden') && 
-                !mobileMenu.contains(event.target) && 
-                !menuButton.contains(event.target)) {
-                mobileMenu.classList.add('hidden');
-            }
-        });
-        
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+        document.getElementById('orcamentoForm').addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // Get form data
-            const formData = new FormData(this);
-            const name = formData.get('name') || 'Cliente';
+            const formData = {
+                nome: document.getElementById('nome').value,
+                email: document.getElementById('email').value,
+                telefone: document.getElementById('telefone').value,
+                servico: document.getElementById('servico').value,
+                mensagem: document.getElementById('mensagem').value,
+                data: new Date().toLocaleString('pt-BR')
+            };
             
-            // Here you would normally send the data to a server
-            // For now, we'll just show a success message
-            alert(`✅ Orçamento solicitado com sucesso, ${name}!\n\nEntrarei em contato em até 24h!\n\nEnzzo Gomes`);
-            
-            // Reset form
-            this.reset();
+            // Envia para o EmailJS
+            emailjs.send('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', formData)
+                .then(function(response) {
+                    alert('✅ Orçamento solicitado com sucesso!\n\nUma cópia foi enviada para seu email e outra chegou na minha caixa de entrada.\n\nEntrarei em contato em breve!');
+                    document.getElementById('orcamentoForm').reset();
+                }, function(error) {
+                    alert('⚠️ Houve um erro ao enviar. Por favor, entre em contato diretamente pelo LinkedIn ou GitHub.');
+                });
         });
         
-        // Smooth scroll for anchor links
+        // Navegação suave
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    // Close mobile menu if open
-                    document.getElementById('mobileMenu').classList.add('hidden');
-                    
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: target.offsetTop - 80,
                         behavior: 'smooth'
                     });
                 }
-            });
-        });
-        
-        // Mouse cursor effect (igual seu portfólio)
-        const outline = document.querySelector(".cursor-outline");
-        if (outline) {
-            window.addEventListener("mousemove", (e) => {
-                const posX = e.clientX;
-                const posY = e.clientY;
-                
-                outline.animate({
-                    left: `${posX}px`,
-                    top: `${posY}px`
-                }, { duration: 500, fill: "forwards" });
-            });
-            
-            window.addEventListener("mousedown", () => {
-                outline.style.transform = "translate(-50%, -50%) scale(0.8)";
-            });
-            window.addEventListener("mouseup", () => {
-                outline.style.transform = "translate(-50%, -50%) scale(1)";
-            });
-        }
-        
-        // Add hover effect to service cards
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', () => {
-                card.style.zIndex = '100';
-            });
-            
-            card.addEventListener('mouseleave', () => {
-                card.style.zIndex = '10';
             });
         });
     </script>
