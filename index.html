@@ -3,443 +3,1427 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Enzzo Gomes | Desenvolvimento Web Profissional</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,300;0,400;0,700;0,900;1,700&display=swap" rel="stylesheet">
-    
-    <!-- EmailJS para formulário funcional -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    
+    <title>ENZZOGOMES - Desenvolvimento de Sites Profissionais</title>
     <style>
-        :root {
-            --neon: #D4FF00;
-            --dark: #0B0B0B;
-            --gray: #1A1A1A;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
         }
-        
+
         body {
-            background: var(--dark);
+            background-color: #0f172a;
+            color: #f1f5f9;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            padding: 25px 0;
+            border-bottom: 1px solid #1e293b;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #60a5fa;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #60a5fa;
+        }
+
+        .btn-portfolio {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
             color: white;
-            font-family: 'Barlow', sans-serif;
-            overflow-x: hidden;
-            cursor: default;
+            padding: 10px 22px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            transition: transform 0.3s;
         }
-        
-        .neon-text { color: var(--neon); }
-        .neon-bg { background: var(--neon); color: black; }
-        .neon-border { border-color: var(--neon); }
-        
-        /* Efeitos de hover */
-        .hover-lift:hover {
-            transform: translateY(-5px);
-            transition: transform 0.3s ease;
+
+        .btn-portfolio:hover {
+            transform: translateY(-2px);
         }
-        
-        .hover-glow:hover {
-            box-shadow: 0 0 20px rgba(212, 255, 0, 0.3);
+
+        /* Conteúdo Principal */
+        main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            padding: 60px 0;
         }
-        
-        /* Animação sutil */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .hero-content {
+            max-width: 800px;
         }
-        
-        .fade-in {
-            animation: fadeIn 0.6s ease-out;
-        }
-        
-        /* Card styling */
-        .service-card {
-            background: var(--gray);
-            border: 1px solid #2a2a2a;
-            transition: all 0.3s ease;
-        }
-        
-        .service-card:hover {
-            border-color: var(--neon);
-            transform: translateY(-8px);
-        }
-        
-        /* Custom scrollbar */
-        ::-webkit-scrollbar {
-            width: 10px;
-        }
-        
-        ::-webkit-scrollbar-track {
-            background: var(--dark);
-        }
-        
-        ::-webkit-scrollbar-thumb {
-            background: var(--neon);
-            border-radius: 5px;
-        }
-        
-        /* Selection */
-        ::selection {
-            background: var(--neon);
-            color: black;
-        }
-        
-        /* Gradient text */
-        .gradient-text {
-            background: linear-gradient(135deg, #D4FF00 0%, #FFFFFF 100%);
+
+        .hero-content h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #60a5fa, #a78bfa);
             -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
             background-clip: text;
+            color: transparent;
+            line-height: 1.1;
         }
-        
-        /* Skew effects */
-        .skew-box {
-            transform: skewX(-12deg);
+
+        .hero-content p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 40px;
+            max-width: 700px;
         }
-        
-        .unskew-content {
-            transform: skewX(12deg);
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
-        
-        @media (max-width: 768px) {
-            .skew-box { transform: skewX(-8deg); }
-            .unskew-content { transform: skewX(8deg); }
-        }
-        
-        /* Pulsing animation */
-        @keyframes pulse-subtle {
-            0%, 100% { opacity: 1; }
-            50% { opacity: 0.8; }
-        }
-        
-        .pulse-subtle {
-            animation: pulse-subtle 2s ease-in-out infinite;
-        }
-        
-        /* Modal styles */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.9);
-            display: none;
-            z-index: 1000;
-        }
-        
-        .modal-content {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: var(--gray);
-            padding: 2rem;
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 14px 32px;
             border-radius: 8px;
-            z-index: 1001;
-            display: none;
-            max-width: 500px;
-            width: 90%;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: #60a5fa;
+            padding: 14px 32px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            display: inline-block;
+            border: 2px solid #334155;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .btn-secondary:hover {
+            border-color: #60a5fa;
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 0;
+            border-top: 1px solid #1e293b;
+            text-align: center;
+            color: #94a3b8;
+            font-size: 14px;
+            margin-top: auto;
+        }
+
+        /* Responsivo */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                gap: 15px;
+                margin-top: 10px;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn-primary, .btn-secondary {
+                text-align: center;
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .logo {
+                font-size: 24px;
+            }
         }
     </style>
 </head>
-<body class="min-h-screen">
+<body>
+    <div class="container">
+        <!-- Header / Navegação -->
+        <header>
+            <nav>
+                <div class="logo">ENZZOGOMES</div>
+                <ul class="nav-links">
+                    <li><a href="#servicos">SERVIÇOS</a></li>
+                    <li><a href="#processo">PROCESSO</a></li>
+                    <li><a href="#portfolio">PORTFÓLIO</a></li>
+                    <li><a href="#contato">CONTATO</a></li>
+                </ul>
+                <a href="#portfolio" class="btn-portfolio">VER PORTFÓLIO</a>
+            </nav>
+        </header>
 
-    <!-- Modal de Confirmação -->
-    <div id="confirmationModal" class="modal-overlay"></div>
-    <div id="confirmationContent" class="modal-content">
-        <div class="text-center p-6">
-            <div class="text-4xl mb-4">✅</div>
-            <h3 class="text-2xl font-black text-white mb-4">Solicitação Enviada!</h3>
-            <p class="text-gray-300 mb-6">Recebi sua solicitação de orçamento. Entrarei em contato em até 24h.</p>
-            <button onclick="closeModal()" class="px-6 py-3 neon-bg text-black font-bold w-full">
-                Fechar
-            </button>
-        </div>
+        <!-- Conteúdo Principal -->
+        <main>
+            <section class="hero-content">
+                <h1>Desenvolvimento de Sites Profissionais</h1>
+                <p>
+                    Crio sites modernos, rápidos e otimizados para converter visitantes em clientes. 
+                    Foco em performance, design intuitivo e resultados mensuráveis.
+                </p>
+                <div class="cta-buttons">
+                    <a href="#orcamento" class="btn-primary">Solicitar Orçamento →</a>
+                    <a href="#servicos" class="btn-secondary">Ver Serviços</a>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2023 ENZZOGOMES. Todos os direitos reservados.</p>
+        </footer>
     </div>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ENZZOGOMES - Desenvolvimento de Sites Profissionais</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET E VARIÁVEIS ===== */
+        :root {
+            /* Cores Principais */
+            --primary-color: #3b82f6;
+            --primary-dark: #1d4ed8;
+            --primary-light: #60a5fa;
+            --secondary-color: #8b5cf6;
+            --accent-color: #06b6d4;
+            
+            /* Tons de Background */
+            --bg-dark: #0f172a;
+            --bg-darker: #020617;
+            --bg-card: #1e293b;
+            --bg-card-hover: #334155;
+            
+            /* Tons de Texto */
+            --text-light: #f8fafc;
+            --text-gray: #cbd5e1;
+            --text-dark: #64748b;
+            
+            /* Bordas */
+            --border-color: #334155;
+            --border-light: #475569;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --shadow-blue: 0 10px 30px -5px rgba(59, 130, 246, 0.3);
+            
+            /* Espaçamentos */
+            --space-xs: 0.5rem;
+            --space-sm: 1rem;
+            --space-md: 1.5rem;
+            --space-lg: 2rem;
+            --space-xl: 3rem;
+            --space-2xl: 4rem;
+            --space-3xl: 6rem;
+            
+            /* Bordas */
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-full: 9999px;
+            
+            /* Transições */
+            --transition-fast: 0.2s ease;
+            --transition-normal: 0.3s ease;
+            --transition-slow: 0.5s ease;
+        }
 
-    <!-- Navigation -->
-    <nav class="fixed top-0 left-0 right-0 z-50 py-6 px-6 bg-dark/95 backdrop-blur-sm border-b border-gray-800">
-        <div class="max-w-7xl mx-auto flex justify-between items-center">
-            <div class="text-2xl font-black italic tracking-tighter">
-                <span class="text-white">ENZZO</span>
-                <span class="neon-text">GOMES</span>
-            </div>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 100px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-gray);
+            line-height: 1.7;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 15% 50%, rgba(59, 130, 246, 0.05) 0%, transparent 50%),
+                        radial-gradient(circle at 85% 30%, rgba(139, 92, 246, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* ===== TIPOGRAFIA ===== */
+        h1, h2, h3, h4, h5, h6 {
+            color: var(--text-light);
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: var(--space-md);
+        }
+
+        h1 {
+            font-size: 3.75rem;
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.025em;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: var(--radius-full);
+        }
+
+        h3 {
+            font-size: 1.875rem;
+        }
+
+        h4 {
+            font-size: 1.5rem;
+        }
+
+        p {
+            margin-bottom: var(--space-md);
+            font-size: 1.125rem;
+        }
+
+        .section-subtitle {
+            color: var(--primary-light);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 0.875rem;
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+
+        /* ===== LAYOUT ===== */
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 var(--space-lg);
+        }
+
+        section {
+            padding: var(--space-3xl) 0;
+            position: relative;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+            padding: 1.25rem 0;
+            transition: all var(--transition-normal);
+        }
+
+        header.scrolled {
+            padding: 0.75rem 0;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: var(--text-light);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .logo span {
+            color: var(--primary-color);
+        }
+
+        .logo i {
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--space-xl);
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: color var(--transition-fast);
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            transition: width var(--transition-normal);
+            border-radius: var(--radius-full);
+        }
+
+        .nav-links a:hover {
+            color: var(--text-light);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a.active {
+            color: var(--primary-light);
+        }
+
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: all var(--transition-normal);
+            box-shadow: var(--shadow-md);
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding-top: 10rem;
+            padding-bottom: var(--space-3xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            margin-bottom: var(--space-lg);
+            font-size: 4rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            margin-bottom: var(--space-xl);
+            max-width: 700px;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--text-dark);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem 2rem;
+            border-radius: var(--radius-md);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all var(--transition-normal);
+            border: none;
+            cursor: pointer;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: var(--shadow-md);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-light);
+            border: 2px solid var(--border-color);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            background-color: rgba(59, 130, 246, 0.05);
+        }
+
+        .hero-visual {
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 45%;
+            height: 80%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, var(--primary-color) 0%, transparent 70%);
+            filter: blur(100px);
+            opacity: 0.3;
+        }
+
+        .code-window {
+            position: relative;
+            width: 80%;
+            background-color: var(--bg-darker);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            border: 1px solid var(--border-color);
+            z-index: 1;
+        }
+
+        .window-header {
+            background-color: var(--bg-card);
+            padding: var(--space-sm);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .window-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+        }
+
+        .dot-red { background-color: #f87171; }
+        .dot-yellow { background-color: #fbbf24; }
+        .dot-green { background-color: #10b981; }
+
+        .window-content {
+            padding: var(--space-lg);
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+        }
+
+        .code-line {
+            margin-bottom: 0.5rem;
+            color: var(--text-gray);
+        }
+
+        .code-line.comment { color: #64748b; }
+        .code-line.tag { color: #60a5fa; }
+        .code-line.attr { color: #a78bfa; }
+        .code-line.value { color: #34d399; }
+
+        /* ===== SERVIÇOS ===== */
+        .services {
+            background-color: var(--bg-darker);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto var(--space-3xl);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .service-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: var(--space-lg);
+            font-size: 1.875rem;
+            color: var(--primary-color);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: var(--space-lg);
+        }
+
+        .service-features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .service-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* ===== PROCESSO ===== */
+        .process-timeline {
+            position: relative;
+            max-width: 800px;
+            margin: var(--space-3xl) auto 0;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--accent-color));
+        }
+
+        .process-step {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: var(--space-2xl);
+        }
+
+        .step-number {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1.25rem;
+            box-shadow: var(--shadow-md);
+        }
+
+        .step-content {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-lg);
+            border: 1px solid var(--border-color);
+        }
+
+        /* ===== PORTFÓLIO ===== */
+        .portfolio {
+            background-color: var(--bg-darker);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+        }
+
+        .portfolio-card {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            transition: all var(--transition-normal);
+            border: 1px solid var(--border-color);
+        }
+
+        .portfolio-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-blue);
+        }
+
+        .portfolio-image {
+            height: 220px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.2), rgba(139, 92, 246, 0.2));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary-color);
+        }
+
+        .portfolio-content {
+            padding: var(--space-lg);
+        }
+
+        .portfolio-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: var(--space-md) 0;
+        }
+
+        .tag {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary-light);
+            padding: 0.25rem 0.75rem;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* ===== CONTATO ===== */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-2xl);
+            align-items: start;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-md);
+        }
+
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(139, 92, 246, 0.1));
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            color: var(--primary-color);
+            flex-shrink: 0;
+        }
+
+        .contact-form {
+            background-color: var(--bg-card);
+            border-radius: var(--radius-lg);
+            padding: var(--space-2xl);
+            border: 1px solid var(--border-color);
+        }
+
+        .form-group {
+            margin-bottom: var(--space-lg);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.875rem 1rem;
+            background-color: var(--bg-dark);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-md);
+            color: var(--text-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: all var(--transition-fast);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--bg-darker);
+            padding: var(--space-3xl) 0 var(--space-xl);
+            border-top: 1px solid var(--border-color);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-2xl);
+            margin-bottom: var(--space-2xl);
+        }
+
+        .footer-logo {
+            font-size: 1.875rem;
+            font-weight: 900;
+            color: var(--text-light);
+            margin-bottom: var(--space-md);
+        }
+
+        .footer-links h4 {
+            margin-bottom: var(--space-lg);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-links a {
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .footer-links a:hover {
+            color: var(--primary-light);
+        }
+
+        .social-links {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            background-color: var(--bg-card);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-gray);
+            text-decoration: none;
+            transition: all var(--transition-fast);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: var(--space-xl);
+            border-top: 1px solid var(--border-color);
+            color: var(--text-dark);
+            font-size: 0.875rem;
+        }
+
+        /* ===== RESPONSIVO ===== */
+        @media (max-width: 1024px) {
+            h1 { font-size: 3rem; }
+            h2 { font-size: 2.25rem; }
             
-            <div class="hidden md:flex items-center gap-8">
-                <a href="#services" class="text-gray-300 hover:text-white hover:neon-text font-medium text-sm uppercase tracking-wider transition-colors">Serviços</a>
-                <a href="#process" class="text-gray-300 hover:text-white hover:neon-text font-medium text-sm uppercase tracking-wider transition-colors">Processo</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-white hover:neon-text font-medium text-sm uppercase tracking-wider transition-colors">Portfólio</a>
-                <a href="#contact" class="text-gray-300 hover:text-white hover:neon-text font-medium text-sm uppercase tracking-wider transition-colors">Contato</a>
-                <a href="https://portifolio-gamma-snowy-87.vercel.app/" target="_blank" 
-                   class="px-6 py-2.5 border-2 neon-border text-white font-bold text-sm uppercase tracking-wider hover:neon-bg hover:text-black transition-all duration-300">
-                    Ver Portfólio
-                </a>
-            </div>
+            .hero-visual {
+                position: relative;
+                width: 100%;
+                height: 400px;
+                transform: none;
+                margin-top: var(--space-2xl);
+            }
             
-            <button id="mobileMenuBtn" class="md:hidden neon-text">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--bg-darker);
+                flex-direction: column;
+                padding: var(--space-xl);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all var(--transition-normal);
+                box-shadow: var(--shadow-xl);
+                border-top: 1px solid var(--border-color);
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            h1 { font-size: 2.5rem; }
+            .hero { padding-top: 8rem; }
+            
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+            
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 var(--space-md);
+            }
+            
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.75rem; }
+            
+            section {
+                padding: var(--space-2xl) 0;
+            }
+            
+            .service-card,
+            .portfolio-card,
+            .contact-form {
+                padding: var(--space-lg);
+            }
+            
+            .process-step {
+                padding-left: 60px;
+            }
+            
+            .step-number {
+                width: 50px;
+                height: 50px;
+                font-size: 1rem;
+            }
+        }
+
+        /* ===== ANIMAÇÕES ===== */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .animate-pulse {
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .animate-slide-in {
+            animation: slideIn 0.6s ease-out forwards;
+        }
+
+        /* ===== UTILITÁRIOS ===== */
+        .text-center { text-align: center; }
+        .mb-xs { margin-bottom: var(--space-xs); }
+        .mb-sm { margin-bottom: var(--space-sm); }
+        .mb-md { margin-bottom: var(--space-md); }
+        .mb-lg { margin-bottom: var(--space-lg); }
+        .mb-xl { margin-bottom: var(--space-xl); }
+        .mt-xs { margin-top: var(--space-xs); }
+        .mt-sm { margin-top: var(--space-sm); }
+        .mt-md { margin-top: var(--space-md); }
+        .mt-lg { margin-top: var(--space-lg); }
+        .mt-xl { margin-top: var(--space-xl); }
+
+        .hidden {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i>
+                ENZZO<span>GOMES</span>
+            </a>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
             </button>
+            
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#servicos">Serviços</a></li>
+                <li><a href="#processo">Processo</a></li>
+                <li><a href="#portfolio">Portfólio</a></li>
+                <li><a href="#contato">Contato</a></li>
+                <li><a href="#portfolio" class="nav-cta">Ver Portfólio</a></li>
+            </ul>
         </div>
-        
-        <!-- Mobile Menu -->
-        <div id="mobileMenu" class="md:hidden absolute top-full left-0 right-0 bg-dark border-b border-gray-800 p-6 hidden">
-            <div class="flex flex-col gap-4">
-                <a href="#services" class="text-gray-300 hover:text-white py-2 border-b border-gray-800">Serviços</a>
-                <a href="#process" class="text-gray-300 hover:text-white py-2 border-b border-gray-800">Processo</a>
-                <a href="#portfolio" class="text-gray-300 hover:text-white py-2 border-b border-gray-800">Portfólio</a>
-                <a href="#contact" class="text-gray-300 hover:text-white py-2 border-b border-gray-800">Contato</a>
-                <a href="https://portifolio-gamma-snowy-87.vercel.app/" target="_blank" 
-                   class="px-6 py-3 neon-bg text-black font-bold text-center mt-4">
-                    Ver Portfólio
-                </a>
-            </div>
-        </div>
-    </nav>
+    </header>
 
     <!-- Hero Section -->
-    <section class="min-h-screen flex items-center justify-center px-6 pt-20">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center fade-in">
-                <div class="mb-8">
-                    <div class="inline-flex items-center gap-3 mb-6">
-                        <div class="w-3 h-3 neon-bg rounded-full pulse-subtle"></div>
-                        <div class="text-gray-400 text-sm uppercase tracking-widest font-medium">Desenvolvimento Web</div>
-                        <div class="w-3 h-3 neon-bg rounded-full pulse-subtle"></div>
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <span class="section-subtitle">Desenvolvimento Web Profissional</span>
+                <h1>Desenvolvimento de Sites Profissionais</h1>
+                <p>
+                    Crio sites modernos, rápidos e otimizados para converter visitantes em clientes. 
+                    Foco em performance, design intuitivo e resultados mensuráveis.
+                </p>
+                
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Projetos Entregues</div>
                     </div>
-                    
-                    <h1 class="text-5xl md:text-7xl font-black mb-8 leading-tight">
-                        <span class="text-white">Desenvolvimento de</span><br>
-                        <span class="gradient-text">Sites Profissionais</span>
-                    </h1>
-                    
-                    <p class="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-                        Crio sites modernos, rápidos e otimizados para converter visitantes em clientes. 
-                        Foco em performance, design intuitivo e resultados mensuráveis.
-                    </p>
+                    <div class="stat-item">
+                        <div class="stat-number">40%</div>
+                        <div class="stat-label">Aumento em Conversões</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">&lt;2s</div>
+                        <div class="stat-label">Tempo de Carregamento</div>
+                    </div>
                 </div>
                 
-                <div class="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-                    <a href="#contact" 
-                       class="px-8 py-4 neon-bg text-black font-bold text-lg hover:opacity-90 transition-opacity flex items-center justify-center gap-3">
-                        <span>Solicitar Orçamento</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                        </svg>
+                <div class="cta-buttons">
+                    <a href="#contato" class="btn btn-primary">
+                        <i class="fas fa-paper-plane"></i>
+                        Solicitar Orçamento
                     </a>
-                    
-                    <a href="#services" 
-                       class="px-8 py-4 border-2 neon-border text-white font-bold text-lg hover:neon-bg hover:text-black transition-all flex items-center justify-center gap-3">
-                        <span>Ver Serviços</span>
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
-                        </svg>
+                    <a href="#servicos" class="btn btn-secondary">
+                        <i class="fas fa-list"></i>
+                        Ver Serviços
                     </a>
                 </div>
-                
-                <!-- Stats -->
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
-                    <div class="service-card p-6 rounded-lg hover-lift hover-glow">
-                        <div class="text-center">
-                            <div class="text-3xl font-black neon-text mb-2">+90</div>
-                            <div class="text-gray-300 text-sm uppercase tracking-wider">Performance</div>
-                        </div>
+            </div>
+            
+            <div class="hero-visual animate-float">
+                <div class="code-window">
+                    <div class="window-header">
+                        <div class="window-dot dot-red"></div>
+                        <div class="window-dot dot-yellow"></div>
+                        <div class="window-dot dot-green"></div>
                     </div>
-                    
-                    <div class="service-card p-6 rounded-lg hover-lift hover-glow">
-                        <div class="text-center">
-                            <div class="text-3xl font-black neon-text mb-2">100%</div>
-                            <div class="text-gray-300 text-sm uppercase tracking-wider">Responsivo</div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card p-6 rounded-lg hover-lift hover-glow">
-                        <div class="text-center">
-                            <div class="text-3xl font-black neon-text mb-2">7-14</div>
-                            <div class="text-gray-300 text-sm uppercase tracking-wider">Dias</div>
-                        </div>
-                    </div>
-                    
-                    <div class="service-card p-6 rounded-lg hover-lift hover-glow">
-                        <div class="text-center">
-                            <div class="text-3xl font-black neon-text mb-2">24h</div>
-                            <div class="text-gray-300 text-sm uppercase tracking-wider">Suporte</div>
-                        </div>
+                    <div class="window-content">
+                        <div class="code-line tag">&lt;<span class="attr">html</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&lt;<span class="attr">head</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="attr">title</span>&gt;</div>
+                        <div class="code-line">Site Profissional &lt;/<span class="attr">title</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&lt;/<span class="attr">head</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&lt;<span class="attr">body</span>&gt;</div>
+                        <div class="code-line comment">&nbsp;&nbsp;&nbsp;&nbsp;&lt;!-- Código otimizado --&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="attr">div</span> <span class="attr">class</span>=<span class="value">"container"</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;<span class="attr">h1</span>&gt;Conversão Máxima&lt;/<span class="attr">h1</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&nbsp;&nbsp;&lt;/<span class="attr">div</span>&gt;</div>
+                        <div class="code-line tag">&nbsp;&nbsp;&lt;/<span class="attr">body</span>&gt;</div>
+                        <div class="code-line tag">&lt;/<span class="attr">html</span>&gt;</div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section id="services" class="py-20 px-6 bg-gray">
-        <div class="max-w-7xl mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-black mb-8">
-                    <span class="gradient-text">Serviços</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Soluções web personalizadas para diferentes necessidades
-                </p>
+    <!-- Serviços -->
+    <section id="servicos" class="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">O que ofereço</span>
+                <h2>Serviços Especializados</h2>
+                <p>Soluções completas para sua presença digital, desde a concepção até a entrega final.</p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="service-card p-8 rounded-lg fade-in hover-lift">
-                    <div class="mb-6">
-                        <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center mb-4">
-                            <div class="text-black font-bold text-xl">LP</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Landing Page</h3>
-                        <p class="text-gray-300 mb-6">
-                            Página única otimizada para conversão, ideal para campanhas específicas ou apresentação de um produto/serviço.
-                        </p>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-laptop-code"></i>
                     </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Design responsivo e moderno
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Otimização SEO básica
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Formulário de contato
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Hospedagem por 1 ano
-                        </li>
+                    <h3>Desenvolvimento Web</h3>
+                    <p>Sites institucionais, landing pages e sistemas web personalizados com as melhores tecnologias do mercado.</p>
+                    <ul class="service-features">
+                        <li>Design responsivo e moderno</li>
+                        <li>Performance otimizada</li>
+                        <li>SEO integrado</li>
+                        <li>Manutenção e suporte</li>
                     </ul>
-                    
-                    <div class="pt-6 border-t border-gray-700">
-                        <div class="flex items-baseline justify-between">
-                            <div>
-                                <div class="text-3xl font-black neon-text">R$ 500</div>
-                                <div class="text-gray-400 text-sm">à vista</div>
-                            </div>
-                            <button onclick="openQuoteModal('Landing Page', 500)" 
-                                    class="px-6 py-2 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                                Solicitar
-                            </button>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Service 2 -->
-                <div class="service-card p-8 rounded-lg fade-in hover-lift border-2 neon-border">
-                    <div class="mb-6">
-                        <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center mb-4">
-                            <div class="text-black font-bold text-xl">SI</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Site Institucional</h3>
-                        <p class="text-gray-300 mb-6">
-                            Site completo com até 5 páginas, ideal para empresas que precisam de uma presença online profissional.
-                        </p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
                     </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Até 5 páginas personalizadas
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            SEO completo otimizado
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Google Analytics
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Sistema de contato avançado
-                        </li>
+                    <h3>E-commerce</h3>
+                    <p>Lojas virtuais completas com integração de pagamentos, gestão de estoque e experiência de compra otimizada.</p>
+                    <ul class="service-features">
+                        <li>Plataforma personalizada</li>
+                        <li>Integração com gateways</li>
+                        <li>Dashboard administrativo</li>
+                        <li>Marketing integrado</li>
                     </ul>
-                    
-                    <div class="pt-6 border-t border-gray-700">
-                        <div class="flex items-baseline justify-between">
-                            <div>
-                                <div class="text-3xl font-black neon-text">R$ 900</div>
-                                <div class="text-gray-400 text-sm">à vista ou 3x</div>
-                            </div>
-                            <button onclick="openQuoteModal('Site Institucional', 900)" 
-                                    class="px-6 py-2 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                                Solicitar
-                            </button>
-                        </div>
-                    </div>
                 </div>
                 
-                <!-- Service 3 -->
-                <div class="service-card p-8 rounded-lg fade-in hover-lift">
-                    <div class="mb-6">
-                        <div class="w-12 h-12 rounded-lg neon-bg flex items-center justify-center mb-4">
-                            <div class="text-black font-bold text-xl">SA</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Site Avançado</h3>
-                        <p class="text-gray-300 mb-6">
-                            Site com recursos avançados, blog integrado e painel administrativo para gestão completa de conteúdo.
-                        </p>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
                     </div>
-                    
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Até 10 páginas + blog
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            Painel administrativo
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            SEO avançado
-                        </li>
-                        <li class="flex items-center text-gray-300">
-                            <span class="w-2 h-2 bg-neon rounded-full mr-3"></span>
-                            WhatsApp Business
-                        </li>
+                    <h3>Otimização & SEO</h3>
+                    <p>Melhoria de performance, otimização para mecanismos de busca e análise de dados para maximizar resultados.</p>
+                    <ul class="service-features">
+                        <li>Auditoria completa</li>
+                        <li>Otimização técnica</li>
+                        <li>Análise de concorrência</li>
+                        <li>Relatórios mensais</li>
                     </ul>
-                    
-                    <div class="pt-6 border-t border-gray-700">
-                        <div class="flex items-baseline justify-between">
-                            <div>
-                                <div class="text-3xl font-black neon-text">R$ 1.500</div>
-                                <div class="text-gray-400 text-sm">à vista ou 4x</div>
-                            </div>
-                            <button onclick="openQuoteModal('Site Avançado', 1500)" 
-                                    class="px-6 py-2 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                                Solicitar
-                            </button>
-                        </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Processo -->
+    <section id="processo">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Como trabalho</span>
+                <h2>Processo de Desenvolvimento</h2>
+                <p>Um método estruturado para garantir qualidade, eficiência e resultados em cada projeto.</p>
+            </div>
+            
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">01</div>
+                    <div class="step-content">
+                        <h3>Briefing & Planejamento</h3>
+                        <p>Entendimento completo do projeto, definição de objetivos, público-alvo e estratégia digital.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">02</div>
+                    <div class="step-content">
+                        <h3>Design & Prototipagem</h3>
+                        <p>Criação de wireframes e protótipos interativos para validação antes do desenvolvimento.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">03</div>
+                    <div class="step-content">
+                        <h3>Desenvolvimento</h3>
+                        <p>Implementação com código limpo, tecnologias modernas e otimização para performance.</p>
+                    </div>
+                </div>
+                
+                <div class="process-step">
+                    <div class="step-number">04</div>
+                    <div class="step-content">
+                        <h3>Entrega & Suporte</h3>
+                        <p>Deploy, treinamento e suporte contínuo para garantir o sucesso do projeto a longo prazo.</p>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Portfólio -->
+    <section id="portfolio" class="portfolio">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Trabalhos recentes</span>
+                <h2>Portfólio</h2>
+                <p>Projetos que demonstram qualidade, criatividade e resultados para os clientes.</p>
+            </div>
             
-            <!-- Maintenance Service -->
-            <div class="mt-12 max-w-2xl mx-auto">
-                <div class="service-card p-8 rounded-lg fade-in hover-lift">
-                    <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-                        <div>
-                            <h3 class="text-2xl font-black text-white mb-2">Manutenção Mensal</h3>
-                            <p class="text-gray-300">
-                                Mantenha seu site sempre seguro, atualizado e com performance máxima.
-                            </p>
+            <div class="portfolio-grid">
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Corporate Solutions</h3>
+                        <p>Site institucional para empresa de consultoria com dashboard administrativo completo.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">MongoDB</span>
                         </div>
-                        <div class="flex items-center gap-6">
-                            <div>
-                                <div class="text-3xl font-black neon-text">R$ 100</div>
-                                <div class="text-gray-400 text-sm">por mês</div>
-                            </div>
-                            <button onclick="openQuoteModal('Manutenção Mensal', 100)" 
-                                    class="px-6 py-2 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                                Contratar
-                            </button>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-store"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Eco Store</h3>
+                        <p>E-commerce completo para marca de produtos sustentáveis com mais de 500 itens.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">Next.js</span>
+                            <span class="tag">Stripe</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="portfolio-card">
+                    <div class="portfolio-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="portfolio-content">
+                        <h3>Health App</h3>
+                        <p>Aplicativo web progressivo para agendamento de consultas médicas e telemedicina.</p>
+                        <div class="portfolio-tags">
+                            <span class="tag">PWA</span>
+                            <span class="tag">Firebase</span>
+                            <span class="tag">Material UI</span>
                         </div>
                     </div>
                 </div>
@@ -447,215 +1431,78 @@
         </div>
     </section>
 
-    <!-- Process Section -->
-    <section id="process" class="py-20 px-6">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-black mb-8">
-                    <span class="gradient-text">Processo de Trabalho</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Metodologia clara e transparente para garantir os melhores resultados
-                </p>
+    <!-- Contato -->
+    <section id="contato">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-subtitle">Vamos conversar</span>
+                <h2>Entre em Contato</h2>
+                <p>Pronto para transformar sua ideia em realidade? Vamos criar algo incrível juntos.</p>
             </div>
             
-            <div class="grid md:grid-cols-4 gap-8">
-                <div class="text-center fade-in">
-                    <div class="relative mb-6">
-                        <div class="w-20 h-20 rounded-full border-2 neon-border flex items-center justify-center mx-auto">
-                            <div class="text-2xl font-black neon-text">01</div>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
                         </div>
-                        <div class="absolute top-1/2 left-full w-8 h-0.5 bg-gray-700 hidden md:block"></div>
-                    </div>
-                    <h3 class="text-xl font-black text-white mb-3">Briefing</h3>
-                    <p class="text-gray-300">
-                        Entendimento detalhado do projeto, objetivos e necessidades específicas.
-                    </p>
-                </div>
-                
-                <div class="text-center fade-in">
-                    <div class="relative mb-6">
-                        <div class="w-20 h-20 rounded-full border-2 neon-border flex items-center justify-center mx-auto">
-                            <div class="text-2xl font-black neon-text">02</div>
-                        </div>
-                        <div class="absolute top-1/2 left-full w-8 h-0.5 bg-gray-700 hidden md:block"></div>
-                    </div>
-                    <h3 class="text-xl font-black text-white mb-3">Proposta</h3>
-                    <p class="text-gray-300">
-                        Envio do orçamento detalhado, cronograma e planejamento do projeto.
-                    </p>
-                </div>
-                
-                <div class="text-center fade-in">
-                    <div class="relative mb-6">
-                        <div class="w-20 h-20 rounded-full border-2 neon-border flex items-center justify-center mx-auto">
-                            <div class="text-2xl font-black neon-text">03</div>
-                        </div>
-                        <div class="absolute top-1/2 left-full w-8 h-0.5 bg-gray-700 hidden md:block"></div>
-                    </div>
-                    <h3 class="text-xl font-black text-white mb-3">Desenvolvimento</h3>
-                    <p class="text-gray-300">
-                        Criação do site com atualizações regulares e aprovações em cada etapa.
-                    </p>
-                </div>
-                
-                <div class="text-center fade-in">
-                    <div class="relative mb-6">
-                        <div class="w-20 h-20 rounded-full border-2 neon-border flex items-center justify-center mx-auto">
-                            <div class="text-2xl font-black neon-text">04</div>
-                        </div>
-                    </div>
-                    <h3 class="text-xl font-black text-white mb-3">Entrega</h3>
-                    <p class="text-gray-300">
-                        Testes finais, ajustes, treinamento e publicação do site.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="py-20 px-6 bg-gray">
-        <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-16 fade-in">
-                <h2 class="text-4xl md:text-5xl font-black mb-8">
-                    <span class="gradient-text">Portfólio</span>
-                </h2>
-                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
-                    Alguns dos projetos recentes desenvolvidos
-                </p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8">
-                <!-- Portfolio Item 1 -->
-                <div class="service-card rounded-lg overflow-hidden fade-in hover-lift">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">IA / Educação</span>
-                            <div class="text-gray-400 text-sm">React • OpenAI</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">AI English Tutor</h3>
-                        <p class="text-gray-300 mb-6">
-                            Tutor de inglês com inteligência artificial para aprendizado personalizado e feedback em tempo real.
-                        </p>
-                        <a href="https://huggingface.co/spaces/Enzzozink/tutor-ingles-ia" 
-                           target="_blank"
-                           class="inline-flex items-center gap-2 px-6 py-3 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                            Ver Projeto
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Portfolio Item 2 -->
-                <div class="service-card rounded-lg overflow-hidden fade-in hover-lift">
-                    <div class="p-8">
-                        <div class="flex justify-between items-start mb-6">
-                            <span class="px-3 py-1 neon-bg text-black text-sm font-bold">Web App</span>
-                            <div class="text-gray-400 text-sm">Next.js • TypeScript</div>
-                        </div>
-                        <h3 class="text-2xl font-black text-white mb-4">Projeto App</h3>
-                        <p class="text-gray-300 mb-6">
-                            Aplicação web moderna com foco em experiência do usuário e organização de dados complexos.
-                        </p>
-                        <a href="https://projeto-app-iota.vercel.app/" 
-                           target="_blank"
-                           class="inline-flex items-center gap-2 px-6 py-3 border-2 neon-border text-white font-bold hover:neon-bg hover:text-black transition-all">
-                            Ver Projeto
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <a href="https://portifolio-gamma-snowy-87.vercel.app/" 
-                   target="_blank"
-                   class="inline-flex items-center gap-3 px-8 py-4 neon-bg text-black font-bold hover:opacity-90 transition-all">
-                    Ver Portfólio Completo
-                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
-                    </svg>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="py-20 px-6">
-        <div class="max-w-4xl mx-auto">
-            <div class="service-card p-8 md:p-12 rounded-lg fade-in">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl md:text-5xl font-black mb-8">
-                        <span class="gradient-text">Entre em Contato</span>
-                    </h2>
-                    <p class="text-xl text-gray-300 max-w-2xl mx-auto">
-                        Vamos conversar sobre seu projeto e como posso ajudar
-                    </p>
-                </div>
-                
-                <form id="contactForm" class="space-y-6">
-                    <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <input type="text" 
-                                   id="name" 
-                                   placeholder="Seu nome" 
-                                   required
-                                   class="w-full px-6 py-4 bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
-                        </div>
-                        
-                        <div>
-                            <input type="email" 
-                                   id="email" 
-                                   placeholder="Seu email" 
-                                   required
-                                   class="w-full px-6 py-4 bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
+                            <h4>Email</h4>
+                            <p>contato@enzzogomes.com</p>
                         </div>
                     </div>
                     
-                    <div>
-                        <input type="text" 
-                               id="phone" 
-                               placeholder="Telefone (opcional)" 
-                               class="w-full px-6 py-4 bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Telefone</h4>
+                            <p>(11) 99999-9999</p>
+                        </div>
                     </div>
                     
-                    <div>
-                        <select id="service" class="w-full px-6 py-4 bg-dark border border-gray-700 rounded-lg text-white focus:outline-none focus:border-neon">
-                            <option value="">Selecione o serviço de interesse</option>
-                            <option value="landing">Landing Page - R$ 500</option>
-                            <option value="institucional">Site Institucional - R$ 900</option>
-                            <option value="avancado">Site Avançado - R$ 1.500</option>
-                            <option value="manutencao">Manutenção Mensal - R$ 100/mês</option>
-                            <option value="outro">Outro (especifique abaixo)</option>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div>
+                            <h4>Horário de Atendimento</h4>
+                            <p>Segunda a Sexta: 9h às 18h</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Nome</label>
+                        <input type="text" id="name" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="project">Tipo de Projeto</label>
+                        <select id="project" class="form-control" required>
+                            <option value="">Selecione uma opção</option>
+                            <option value="site">Site Institucional</option>
+                            <option value="ecommerce">Loja Virtual</option>
+                            <option value="sistema">Sistema Web</option>
+                            <option value="outro">Outro</option>
                         </select>
                     </div>
                     
-                    <div>
-                        <textarea 
-                            id="message" 
-                            placeholder="Conte-me sobre seu projeto, objetivos e prazos..." 
-                            rows="4"
-                            required
-                            class="w-full px-6 py-4 bg-dark border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-neon resize-none"></textarea>
+                    <div class="form-group">
+                        <label for="message">Mensagem</label>
+                        <textarea id="message" class="form-control" required></textarea>
                     </div>
                     
-                    <div>
-                        <label class="flex items-start">
-                            <input type="checkbox" id="consent" required class="mt-1 mr-3">
-                            <span class="text-gray-300 text-sm">
-                                Concordo em receber uma proposta por email. Seus dados serão utilizados apenas para este orçamento.
-                            </span>
-                        </label>
-                    </div>
-                    
-                    <button type="submit" 
-                            class="w-full px-8 py-4 neon-bg text-black font-bold text-lg hover:opacity-90 transition-opacity">
-                        Enviar Solicitação
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">
+                        <i class="fas fa-paper-plane"></i>
+                        Enviar Mensagem
                     </button>
                 </form>
             </div>
@@ -663,176 +1510,154 @@
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 px-6 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
-                <div>
-                    <div class="text-2xl font-black italic tracking-tighter mb-2">
-                        <span class="text-white">ENZZO</span>
-                        <span class="neon-text">GOMES</span>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">ENZZOGOMES</div>
+                    <p>Desenvolvimento de sites profissionais com foco em performance, design e resultados mensuráveis.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-whatsapp"></i></a>
                     </div>
-                    <p class="text-gray-400">Desenvolvimento Web Profissional</p>
                 </div>
                 
-                <div class="text-center">
-                    <p class="text-gray-400">
-                        &copy; <span id="currentYear"></span> Enzzo Gomes
-                    </p>
-                    <p class="text-gray-500 text-sm mt-2">
-                        Todos os direitos reservados
-                    </p>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#servicos">Serviços</a></li>
+                        <li><a href="#processo">Processo</a></li>
+                        <li><a href="#portfolio">Portfólio</a></li>
+                        <li><a href="#contato">Contato</a></li>
+                    </ul>
                 </div>
                 
-                <div class="flex gap-6">
-                    <a href="https://github.com/EnzzoGomes" 
-                       target="_blank"
-                       class="text-gray-400 hover:text-white transition-colors">
-                        GitHub
-                    </a>
-                    <a href="https://linkedin.com" 
-                       target="_blank"
-                       class="text-gray-400 hover:text-white transition-colors">
-                        LinkedIn
-                    </a>
+                <div class="footer-links">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="#servicos">Desenvolvimento Web</a></li>
+                        <li><a href="#servicos">E-commerce</a></li>
+                        <li><a href="#servicos">Otimização SEO</a></li>
+                        <li><a href="#servicos">Manutenção</a></li>
+                        <li><a href="#servicos">Consultoria</a></li>
+                    </ul>
                 </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2023 ENZZOGOMES. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Initialize EmailJS (você precisa criar conta gratuita em emailjs.com)
-        // emailjs.init("SUA_PUBLIC_KEY_AQUI");
+        // Menu Mobile
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
         
-        // Mobile menu toggle
-        document.getElementById('mobileMenuBtn').addEventListener('click', function() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
         });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(event) {
-            const menu = document.getElementById('mobileMenu');
-            const btn = document.getElementById('mobileMenuBtn');
-            
-            if (!menu.classList.contains('hidden') && 
-                !menu.contains(event.target) && 
-                !btn.contains(event.target)) {
-                menu.classList.add('hidden');
+
+        // Header Scroll Effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
         });
-        
-        // Smooth scroll
+
+        // Smooth Scroll for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
                 if (targetId === '#') return;
                 
                 const targetElement = document.querySelector(targetId);
                 if (targetElement) {
-                    // Close mobile menu if open
-                    document.getElementById('mobileMenu').classList.add('hidden');
+                    // Fecha menu mobile se aberto
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                     
                     window.scrollTo({
-                        top: targetElement.offsetTop - 80,
+                        top: targetElement.offsetTop - 100,
                         behavior: 'smooth'
                     });
                 }
             });
         });
-        
-        // Modal functions
-        function openQuoteModal(service, price) {
-            document.getElementById('confirmationModal').style.display = 'block';
-            document.getElementById('confirmationContent').style.display = 'block';
-            
-            // Pre-fill the contact form
-            document.getElementById('service').value = service.toLowerCase().replace(' ', '_');
-            document.getElementById('message').value = `Gostaria de solicitar orçamento para: ${service} (R$ ${price})`;
-            
-            // Scroll to contact form
-            document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
-        }
-        
-        function closeModal() {
-            document.getElementById('confirmationModal').style.display = 'none';
-            document.getElementById('confirmationContent').style.display = 'none';
-        }
-        
-        // Close modal when clicking overlay
-        document.getElementById('confirmationModal').addEventListener('click', closeModal);
-        
-        // Contact form submission
-        document.getElementById('contactForm').addEventListener('submit', function(e) {
+
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                service: document.getElementById('service').value,
-                message: document.getElementById('message').value,
-                date: new Date().toLocaleString('pt-BR')
-            };
+            // Simulação de envio
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.innerHTML;
             
-            // Aqui você integra com EmailJS ou outro serviço
-            // Exemplo com EmailJS (descomente e configure suas chaves):
-            /*
-            emailjs.send('SERVICE_ID', 'TEMPLATE_ID', formData)
-                .then(function(response) {
-                    showConfirmation();
-                    this.reset();
-                }, function(error) {
-                    alert('Erro ao enviar. Tente novamente.');
-                });
-            */
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
+            submitBtn.disabled = true;
             
-            // Por enquanto, mostra confirmação local
-            showConfirmation();
-            this.reset();
+            setTimeout(() => {
+                alert('Mensagem enviada com sucesso! Entrarei em contato em breve.');
+                contactForm.reset();
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
+            }, 1500);
         });
-        
-        function showConfirmation() {
-            openQuoteModal('Formulário enviado', 0);
-            
-            // Change modal content for form submission
-            const modalContent = document.querySelector('#confirmationContent .text-center');
-            modalContent.innerHTML = `
-                <div class="text-4xl mb-4">✅</div>
-                <h3 class="text-2xl font-black text-white mb-4">Mensagem Enviada!</h3>
-                <p class="text-gray-300 mb-6">Recebi sua solicitação. Entrarei em contato em até 24h.</p>
-                <button onclick="closeModal()" class="px-6 py-3 neon-bg text-black font-bold w-full">
-                    Fechar
-                </button>
-            `;
-        }
-        
-        // Set current year in footer
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
-        
-        // Add fade-in animation on scroll
+
+        // Scroll Animation
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
         };
-        
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('fade-in');
+                    entry.target.classList.add('visible');
                 }
             });
         }, observerOptions);
-        
-        document.querySelectorAll('.fade-in').forEach(el => {
+
+        // Observe elements for scroll animation
+        document.querySelectorAll('.service-card, .portfolio-card, .process-step, .contact-form').forEach(el => {
+            el.classList.add('hidden');
             observer.observe(el);
         });
-        
-        // Initialize with fade-in for elements in view
-        document.querySelectorAll('.fade-in').forEach(el => {
-            if (el.getBoundingClientRect().top < window.innerHeight) {
-                el.classList.add('fade-in');
-            }
+
+        // Update Active Nav Link on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const scrollPosition = window.scrollY + 150;
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
         });
     </script>
 </body>
