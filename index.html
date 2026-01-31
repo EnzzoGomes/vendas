@@ -684,76 +684,6 @@
             border: 1px solid var(--border-color);
         }
 
-        /* ===== PORTFÓLIO ===== */
-        .portfolio {
-            background-color: var(--bg-darker);
-        }
-
-        .portfolio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
-            gap: var(--space-xl);
-        }
-
-        .portfolio-card {
-            background-color: var(--bg-card);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            transition: all var(--transition-normal);
-            border: 1px solid var(--border-color);
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-green);
-            border-color: var(--primary-color);
-        }
-
-        .portfolio-image {
-            height: 200px;
-            background: linear-gradient(135deg, rgba(0, 255, 136, 0.2), rgba(0, 0, 0, 0.2));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.5rem;
-            color: var(--primary-color);
-        }
-
-        .portfolio-content {
-            padding: var(--space-lg);
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .portfolio-content h3 {
-            margin-bottom: var(--space-sm);
-        }
-
-        .portfolio-content p {
-            margin-bottom: var(--space-md);
-            flex-grow: 1;
-        }
-
-        .portfolio-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin: var(--space-md) 0;
-        }
-
-        .tag {
-            background-color: rgba(0, 255, 136, 0.1);
-            color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
         /* ===== CONTATO ===== */
         .contact-wrapper {
             display: grid;
@@ -1007,8 +937,7 @@
                 font-size: 1rem;
             }
             
-            .services-grid,
-            .portfolio-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
                 gap: var(--space-lg);
             }
@@ -1024,7 +953,6 @@
             }
             
             .service-card,
-            .portfolio-card,
             .contact-form {
                 padding: var(--space-lg);
             }
@@ -1342,64 +1270,6 @@
         </div>
     </section>
 
-    <!-- Portfólio -->
-    <section id="portfolio" class="portfolio">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-subtitle">Trabalhos recentes</span>
-                <h2>Portfólio</h2>
-                <p>Projetos que demonstram qualidade, criatividade e resultados para os clientes.</p>
-            </div>
-            
-            <div class="portfolio-grid">
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-briefcase"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Corporate Solutions</h3>
-                        <p>Site institucional para empresa de consultoria com dashboard administrativo completo.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-store"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Eco Store</h3>
-                        <p>E-commerce completo para marca de produtos sustentáveis com mais de 500 itens.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">Next.js</span>
-                            <span class="tag">Stripe</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="portfolio-card">
-                    <div class="portfolio-image">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Health App</h3>
-                        <p>Aplicativo web progressivo para agendamento de consultas médicas e telemedicina.</p>
-                        <div class="portfolio-tags">
-                            <span class="tag">PWA</span>
-                            <span class="tag">Firebase</span>
-                            <span class="tag">Material UI</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Contato -->
     <section id="contato">
         <div class="container">
@@ -1498,7 +1368,6 @@
                         <li><a href="#home">Home</a></li>
                         <li><a href="#servicos">Serviços</a></li>
                         <li><a href="#processo">Processo</a></li>
-                        <li><a href="#portfolio">Portfólio</a></li>
                         <li><a href="#contato">Contato</a></li>
                     </ul>
                 </div>
@@ -1516,7 +1385,8 @@
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 ENZZOGOMES. Todos os direitos reservados.</p>
+                <!-- ANO ATUALIZADO PARA 2026 -->
+                <p>&copy; 2026 ENZZOGOMES. Todos os direitos reservados.</p>
             </div>
         </div>
     </footer>
@@ -1711,7 +1581,7 @@
         }, observerOptions);
 
         // Observe elements for scroll animation
-        document.querySelectorAll('.service-card, .portfolio-card, .process-step, .contact-form').forEach(el => {
+        document.querySelectorAll('.service-card, .process-step, .contact-form').forEach(el => {
             el.classList.add('hidden');
             observer.observe(el);
         });
